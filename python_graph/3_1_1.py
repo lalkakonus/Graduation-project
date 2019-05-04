@@ -4,7 +4,7 @@ def l_1_function(x):
     return (sqrt(2) - 1)*x + 1
 
 def l_2_function(x):
-    return (x-1) / (sqrt(2)-1)
+    return (x-1) / (3 - sqrt(2))
 
 def sector_1(x, y):
     return (y < l_1_function(x)) and  (y > l_2_function(x))
@@ -24,7 +24,7 @@ plt.ylabel(r'$q_2$', fontsize=16)
 
 sector(ax, sector_1, color='lightgreen')
 line(ax, l_1_function, color='black', label=r'$\ell_1: \; q_2=(\sqrt{2}-1)q_0+1$')
-line(ax, l_2_function, color='black', label=r'$\ell_2: \; q_2=\dfrac{q_0-1}{\sqrt{2}-1}$')
+line(ax, l_2_function, color='black', label=r'$\ell_2: \; q_2=\dfrac{q_0-1}{3 - \sqrt{2}}$')
 
 #-----------lines----------------------
 
@@ -43,9 +43,9 @@ ax.annotate(r'$\ell_1$',
             verticalalignment='top')
 
 ax.annotate(r'$\ell_2$',
-            xy=(1.4, 0.6), fontsize=25,
+            xy=(1.4, 0.3), fontsize=25,
             horizontalalignment='right',
-            verticalalignment='top')
+            verticalalignment='bottom')
 
 #-----------dots----------------------
 

@@ -37,12 +37,12 @@ plt.plot([0, 0], [y_lims[0], 1], c='black', linestyle='--')
 
 #-----------labels--------------------
 
-ax.annotate(r'$\ell(q,\mu)=0, \hspace{3mm} \mu \rightarrow 0$',
+ax.annotate(r'$\ell_B(q,\mu)=0, \hspace{3mm} \mu \rightarrow 1$',
             xy=(0.6, 1.4), fontsize=25,
             horizontalalignment='right',
             verticalalignment='top')
 
-ax.annotate(r'$\ell(q,\mu)=0, \hspace{3mm} \mu \rightarrow 1$',
+ax.annotate(r'$\ell_B(q,\mu)=0, \hspace{3mm} \mu \rightarrow 0$',
             xy=(1.1, 0.2), fontsize=25,
             horizontalalignment='left',
             verticalalignment='top')

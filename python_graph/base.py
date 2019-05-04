@@ -11,7 +11,7 @@ def line(ax, function, color='green', label=''):
     y_cords = list(map(lambda x: function(x), x_cords))
     ax.plot(x_cords, y_cords, c=color, linewidth=2, label=label)
 
-def curve(ax, function, N=5e2, color='green', size=0.5):
+def curve(ax, function, N=5e1, color='green', size=0.5):
     x_array, y_array = [], []
     for x in np.linspace(*ax.get_xlim(), N):
         y = function(x)
