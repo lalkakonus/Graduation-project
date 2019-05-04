@@ -1,0 +1,39 @@
+\section{Постановка задача}
+
+\begin{flushleft}
+
+	Функциональный критерий: 
+	$F(x, y) = (\frac{y\sqrt{x}}{2},\frac{\sqrt{1-x}}{y})$
+	
+
+	
+	\begin{center}
+	\begin{tabu} to 0.8 \textwidth {X[c] X[c]}
+		$\textrm{С:  }F(x, y) \rightarrow \max \limits_{x\in X}$	&
+		$\textrm{П:  }F(x, y) \rightarrow \min \limits_{y \in Y}$ \\
+		$X = \{ 0; \frac{1}{2}; 1\}$ & $Y = \{1, 2\}$	\\
+		\\
+		$P(X=0)=q_0$ & $P(Y=1)=p_0$ \\
+		$P(X=\frac{1}{2})=q_1$ & $P(Y=2)=p_1$ \\
+		$P(X=1)=q_2$ & 
+		\\
+		$\sum \limits_{i=0}^2 q_i=1$ & $\sum \limits_{i=0}^1 p_i=1$ \\
+		$0 \leqslant q_i \leqslant 1 \;,\;\; i=\overline{0,2}$ &
+		$0 \leqslant p_i \leqslant 1 \;,\;\; i=\overline{0,1}$  \\
+		\\
+		$\textrm{Следровательно  } q_1 = 1-q_0-q_2$ & 
+		$\textrm{Пусть  } p := p_1, \textrm{ тогда }\; p_0=1-p$ 
+	\end{tabu}	
+	\end{center}
+
+	Введём множество 
+	\begin{equation}
+		Q=\{(q_0,q_2) \in \mathbb{R}^2 \; | \;
+		0 \leqslant q_i \leqslant 1 \; i\in\{0,2\}; \; 
+		q_0 + q_2 \leqslant 1\}	
+	\end{equation}
+
+
+	Студент выбирет $X$ и использует \textbf{ОЛС}. \\
+	Преподаватель выбирает $Y$ и использует \textbf{ЛС}.\\
+\end{flushleft}
