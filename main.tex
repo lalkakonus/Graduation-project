@@ -5,14 +5,12 @@
 \usepackage[russian]{babel}
 \usepackage{tikz}
 \usepackage{tabu}
-\usepackage{graphicx}
 \usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{fixltx2e}
 \usepackage{caption}
 \usepackage{float}
-\newcommand{\RomanNumeralCaps}[1]
-    {\MakeUppercase{\romannumeral #1}}
+\usepackage{graphicx}
 \usepackage{subcaption}
 \graphicspath{ {./images/} }
 \usetikzlibrary{shapes.geometric,shapes.symbols,positioning,decorations.pathmorphing}
@@ -36,24 +34,20 @@
 	urlcolor=blue         
 }
 %++++++++++++++++++++++++++++++++++++++++
-
-
 \begin{document}
 
-\title{Выпуская квалификационная работа}
-\title{Свойства свёртки Гермейера в векторных играх }
-\author{Кононов Сергей}
-\date{\today}
-\maketitle
-
-\clearpage
-\tableofcontents
-\clearpage
+\input{include/title}
+\input{include/2_introduction}
+\input{include/2_optimal_strategies}
+\input{include/2_graphical_image_e}
+\input{include/2_s_optimal_strategies}
+\input{include/2_conclusion}
 
 \input{include/3_introduction}
 \input{include/3_problem_defenition}
 \input{include/3_optimal_values_1}
 \input{include/3_optimal_values_2}
 
-%\end{flushleft}
+\input{include/bibliogaphy}
+
 \end{document}
