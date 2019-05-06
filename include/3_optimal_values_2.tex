@@ -312,8 +312,7 @@
 	Найдём значение $\mu$ при котором прямая $\ell_B(q, \mu)$ проходит через точку
 	$q=(0,0)$:
 	
-	$$\ell_1(0,0,\hat \mu) = \ell_2(0,0,\hat \mu) :
-	\frac{1}{2\hat \mu}=\frac{1}{1-\hat \mu} 
+	$$\ell_B(0,0,\hat \mu) = 0
 	\Rightarrow \hat \mu = \frac{1}{3}$$	
 	
 	Очевидно, что на полиэдре $P_B(\mu):$
@@ -331,16 +330,16 @@
 	\end{cases}	
 	$$
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
     	\centering
-     	\begin{subfigure}[b]{0.45 \textwidth}
+     	\begin{subfigure}[b]{0.4 \textwidth}
         	\centering
         	\includegraphics[width=\textwidth]{images/graf_3_3}
         	\caption{$\mu=0.1 < \frac{1}{3}$}
          	\label{fig:y equals x}
      	\end{subfigure}
      	\hspace{10mm}
-     	\begin{subfigure}[b]{0.45 \textwidth}
+     	\begin{subfigure}[b]{0.4 \textwidth}
         	\centering
         	\includegraphics[width=\textwidth]{images/graf_3_4}
         	\caption{$\mu=0.4 > \frac{1}{3}$}
@@ -348,94 +347,102 @@
      	\end{subfigure}
 	\end{figure}	
 
+	На графике зелёным цветом изображена область $P_B(\mu)$, чёрным цветом
+	обозначены линии уровня и стрелкой соответсвенно градиент функции.
 	Рассмотрим эти два случая и найдём явное выражение для точки $B(\mu)$:
 	
-	a) Если $\mu \geqslant \frac{1}{3}$ то координата $q_2$ точки 
+	\textbf{(a)} Если $\frac{1}{3} \leqslant \mu \leqslant 1$ то координата $q_2$ точки 
 	максимума определяется из условия: 
-	$$\ell_1(0,q_2,\mu)=\ell_2(0,q_2,\mu)$$
-
-	$$
-	\frac{1-q_2}{1-\mu}=\frac{1+(\sqrt{2} - 1)q_2}{2\mu} 
-	\hspace{3mm} \Rightarrow \hspace{3mm}
-	q_2=\frac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}	
-	$$
-
-	$$q^*=(0;\dfrac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}), \hspace{3mm}
-	\mu \geqslant \frac{1}{3}$$
-
-	b) Если $\mu \leqslant \frac{1}{3}$ то координата $q_0$ точки 
-	максимума определяется из условия: 	
-	$$\ell_1(q_0,0,\mu)=\ell_2(q_0,0,\mu)$$
-
-	$$
-	\frac{1-q_0}{2\mu}=\frac{1+(\sqrt{2} - 1)q_0}{1-\mu} 
-	\hspace{3mm} \Rightarrow \hspace{3mm}
-	q_0=\frac{1-3\mu}{1+(2\sqrt{2}-3\mu)}	
-	$$
 	
-	$$q^*=(0;\dfrac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}), \hspace{3mm}
-	\mu \geqslant \frac{1}{3}$$
+	\begin{gather*}
+		\ell_B(0,q_2,\mu)=0
+		\\
+		(1-\sqrt{2}+\mu(\sqrt{2}-3))q_2+3\mu-1=0
+		\hspace{3mm} \Rightarrow \hspace{3mm}
+		q_2=\frac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}	
+		\\
+		q^*=(0;\dfrac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}), \hspace{3mm}
+		\frac{1}{3} \leqslant \mu \leqslant 1
+	\end{gather*}
 
+	\textbf{(b)} Если $0 \leqslant \mu \leqslant \frac{1}{3}$ то координата $q_0$ точки 
+	максимума определяется из условия: 	
+
+	\begin{gather*}
+		\ell_B(q_0,0,\mu)=0
+		\\	
+		(1+\mu(2\sqrt{2}-3))q_0
+		+3\mu-1=0
+		\hspace{3mm} \Rightarrow \hspace{3mm}
+		q_0=\frac{1-3\mu}{1+(2\sqrt{2}-3\mu)}	
+		\\ 	
+		q^*=(\frac{1-3\mu}{1+(2\sqrt{2}-3\mu)}; 0), \hspace{3mm}
+		0 \leqslant \mu \leqslant \frac{1}{3}
+	\end{gather*}
+	
 	Следовательно:
-	$$
-	q^*= \arg \max \limits_{q\in P_1(\mu)} \overline G(y,q,\mu) =
-	\begin{cases}
-		(0;\dfrac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}), & \mu \geqslant \frac{1}{3} \\
-		(\dfrac{1-3\mu}{1+(2\sqrt{2}-3\mu)};0), & \mu \leqslant \frac{1}{3}
-	\end{cases}
-	$$
+	\begin{equation} \label{eq:B}
+		B(\mu) = \arg \max \limits_{q\in P_B(\mu)} \overline G(y,q,\mu) = 
+		\begin{cases}
+			(0;\dfrac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu})
+			, & \frac{1}{3} \leqslant \mu \leqslant 1
+			\\
+			(\dfrac{1-3\mu}{1+(2\sqrt{2}-3\mu)};0)
+			, & 0 \leqslant \mu \leqslant \frac{1}{3}
+		\end{cases}
+	\end{equation}
 
 %------------------------------------------------------------
 
-	\circled{2} Рассмотрим $\ell_3 \leqslant \ell_4$
+	\textbf{(2)} Рассмотрим $\ell_3 \leqslant \ell_4$.
+	Производная в области имеет вид:
 	
 	$$\frac{\partial \overline{G}(p,q,\mu)}{\partial q}=
 	\frac{1+p}{2\sqrt{2}\mu} \langle -1;\sqrt{2}-1 \rangle 
- 	\textrm{, если }\ell_3 \leqslant \ell_4$$
+ 	$$
  	
 	Введём вспомогалетльную функцию	
- 	$\ell_A(q, \mu):=\ell_3-\ell_4$
- 	Множество положительных значений которой определяет интересующую область,
- 	причём функция $\ell$ является линейной по переменным $q_0$ и $q_2$ т.е.:
+ 	$\ell_A(q, \mu):=(\ell_3-\ell_4) \cdot \mu(1-\mu)$,
+ 	множество, на котором она принимает неотрицательные значения 
+ 	составляют интересующую нас область. Множитель $\mu(1-\mu)$ является строго
+ 	положительным на $\mu \in (0,1)$, поэтому не влияет на знак. Функция
+ 	является линейной по переменным $q_0$ и $q_2$:
  	
 	$$\ell_A(q, \mu)=
 	-(2+(\sqrt{2}-3)\mu)q_0
 	-(2-2\sqrt{2}+(2\sqrt{2}-3)\mu)q_2
 	-3\mu+2$$ 	
  	
-	$$\ell_A(q, \mu)=A(\mu)q_0+B(\mu)q_1+C(\mu)$$
-	
 	Параметр $\mu$ изменяется в диапазоне $(0,1)$, причём	
 	
 	\begin{gather*}	
-	\ell_A(q,\mu) =0\xrightarrow[\mu\rightarrow 1]{} 
-	1-q_0+(\sqrt{2}-1)q_2=0\\	
-	\ell_A(q,\mu)=0 \xrightarrow[\mu\rightarrow 0]{} 	
-	1-q_2+(\sqrt{2}-1)q_0=0\\
+	\ell_A(q,\mu) \xrightarrow[\mu\rightarrow 1]{} 
+	1-q_0+(\sqrt{2}-1)q_2\\	
+	\ell_A(q,\mu) \xrightarrow[\mu\rightarrow 0]{} 	
+	1-q_2+(\sqrt{2}-1)q_0\\
 	\end{gather*}
 	
-	Предельные положения $\ell_1(q, \mu)=\ell_2(q, \mu)$ изображены на графике 
-	в предыдущем пункте. Найдём значение $\mu$ при котором прямая 
+	Предельные положения $\ell_B(q, \mu)=0$ изображены на графике \eqref{fig:l_B_limits}.
+	Найдём значение $\mu$ при котором прямая 
 	$\ell(q, \mu)$ проходит через точку
 	$q=(0,0)$:
 	
-	$$\ell_3(0,0,\mu) = \ell_4(0,0,\mu) : \frac{1}{\mu}=\frac{1}{2(1-\mu)} 
-	\Rightarrow \mu = \frac{2}{3}$$
+	$$\ell_A(0,0,\hat \mu) = 0 \Rightarrow \hat \mu = \frac{2}{3}$$
 	
 	Очевидно, что на полиэдре $P_2(\mu):$
 	
-	$$P_2(\mu)=\{q \in [0,1]^2, \; \mu \in (0,1) \; | 
-	\;  \ell_3(q, \mu) \leqslant \ell_4(q, \mu) \}$$
+	$$P_A(\mu)=\{q \in Q \; | 
+	\;  \ell_3(q, \mu) \leqslant \ell_4(q, \mu) \}, \; \mu \in (0,1)$$
 	
-	ф-ия $\overline{G}(p,q,\mu)$ достигает максимума в точке $A(\mu):$
+	функция $\overline{G}(p,q,\mu)$ достигает максимума в точке $A(\mu):$
 	
-	$$
-	q^*= \arg \max \limits_{q\in P_2(\mu)} \overline G(p,q,\mu) = A(\mu)=
-	\begin{cases}
-		(0, q_2) : \ell_3(0,q_2,\mu)=\ell_4(0,q_2,\mu), & \mu \geqslant \frac{2}{3} \\
-		(q_0, 0) : \ell_3(q_0,0,\mu)=\ell_4(q_0,0,\mu), & \mu \leqslant \frac{2}{3} \\
-	\end{cases}	
-	$$
+	\begin{gather*}
+		A(\mu)= \arg \max \limits_{q\in P_A(\mu)} \overline G(p,q,\mu) =
+		\begin{cases}
+			(0, q_2) : \ell_A(0,q_2,\mu)=0, & \frac{2}{3} \leqslant \mu \leqslant 1 \\
+			(q_0, 0) : \ell_A(q_0,0,\mu)=0, & 0 \leqslant \mu \leqslant \frac{2}{3} \\
+		\end{cases}		
+	\end{gather*}
 	
 	\begin{figure}[H]
     	\centering
@@ -454,57 +461,61 @@
      	\end{subfigure}
 	\end{figure}	
 	
+	На графике зелёным цветом изображена область $P_A(\mu)$, чёрным цветом
+	обозначены линии уровня и стрелкой соответсвенно градиент функции.
 	Рассмотрим эти два случая и найдём явное выражение для точки $A(\mu)$:
 
-	a) Если $\mu \geqslant \frac{2}{3}$ то координата $q_2$ точки 
-	максимума определяется из условия: 	
-	$$\ell_3(0,q_2,\mu)=\ell_4(0,q_2,\mu)$$
-
-	$$
-	\frac{1-q_2}{2(1-\mu)}=\frac{1+(\sqrt{2} - 1)q_2}{\mu} 
-	\hspace{3mm} \Rightarrow \hspace{3mm}
-	q_2=\frac{3\mu-2}{2(\sqrt{2}-1)+(3-2\sqrt{2})\mu}	
-	$$
-	
-	$$
-	q^*= (0;\dfrac{3\mu-2}{2(\sqrt{2}-1)+(3-2\sqrt{2})\mu}), \mu \geqslant \frac{2}{3}
-	$$
-
-
-	b) Если $\mu \leqslant \frac{2}{3}$ то координата $q_0$ точки 
+	\textbf{(a)} Если $\frac{2}{3} \leqslant \mu \leqslant 1$ то координата $q_2$ точки 
 	максимума определяется из условия: 	
 	
-	$$\ell_3(q_0,0,\mu)=\ell_4(q_0,0,\mu)$$
+	\begin{gather*}	
+		\ell_A(0,q_2,\mu)=0 
+		\\
+		-(2-2\sqrt{2}+(2\sqrt{2}-3)\mu)q_2
+		-3\mu+2=0
+		\hspace{3mm} \Rightarrow \hspace{3mm}
+		q_2=\frac{3\mu-2}{2(\sqrt{2}-1)+(3-2\sqrt{2})\mu}	
+		\\
+		q^*= (0;\dfrac{3\mu-2}{2(\sqrt{2}-1)+(3-2\sqrt{2})\mu}), 
+		\hspace{5mm} \frac{2}{3} \leqslant \mu \leqslant 1
+	\end{gather*}
 
-	$$
-	\frac{1-q_0}{\mu}=\frac{1+(\sqrt{2} - 1)q_0}{2(1-\mu)} 
-	\hspace{3mm} \Rightarrow \hspace{3mm}
-	q_0=\frac{2-3\mu}{2+(\sqrt{2}-3)\mu}	
-	$$
+
+	\textbf{(b)} Если $0 \leqslant \mu \leqslant \frac{2}{3}$ то координата $q_0$ точки 
+	максимума определяется из условия: 	
 	
-	$$
-	q^*= (\dfrac{2-3\mu}{2+(\sqrt{2}-3)\mu};0), \mu \leqslant \frac{2}{3}
-	$$
-
+	\begin{gather*}
+		\ell_A(q_0,0,\mu)=0	
+		\\
+		-(2+(\sqrt{2}-3)\mu)q_0
+		-3\mu+2=0	
+		\hspace{3mm} \Rightarrow \hspace{3mm}
+		q_0=\frac{2-3\mu}{2+(\sqrt{2}-3)\mu}	
+		\\
+		q^*= (\dfrac{2-3\mu}{2+(\sqrt{2}-3)\mu};0), 
+		\hspace{5mm} 0 \leqslant \mu \leqslant \frac{2}{3}	
+	\end{gather*}
+	
 	Следовательно:
-	$$
-	q^*= \arg \max \limits_{q\in P_2(\mu)} \overline G(p,q,\mu) =
-	\begin{cases}
-		(0;\dfrac{3\mu-2}{2(\sqrt{2}-1)+(3-2\sqrt{2})\mu}), & \mu \geqslant \frac{2}{3} \\
-		(\dfrac{2-3\mu}{2+(\sqrt{2}-3)\mu};0), & \mu \leqslant \frac{2}{3}
-	\end{cases}
-	$$
+	\begin{equation} \label{eq:A}
+		A(\mu) = \arg \max \limits_{q\in P_A(\mu)} \overline G(p,q,\mu) = 
+		\begin{cases}
+			(0;\dfrac{3\mu-2}{2(\sqrt{2}-1)+(3-2\sqrt{2})\mu})
+			, & \frac{2}{3} \leqslant \mu \leqslant 1 \\
+			(\dfrac{2-3\mu}{2+(\sqrt{2}-3)\mu};0), & 0 \leqslant \mu \leqslant \frac{2}{3}	
+		\end{cases}
+	\end{equation}
 
 %------------------------------------------------------------
 
-	\circled{3} Рассмотрим область в которой
+	\textbf{(3)} Рассмотрим область в которой
 	$\begin{cases}
 		\ell_1 \leqslant \ell_2 \\	
 		\ell_3 \geqslant \ell_4 \\
 	\end{cases}	
 	$
 	
-	Частные переменные имеют следующий види в данной области.
+	Частные производные имеют следующий види в данной области.
 	
 	$
 	\dfrac{\partial \overline{G}(p,q,\mu)}{\partial q}=
@@ -515,86 +526,130 @@
 	\big \rangle
 	$
 
+	\begin{gather*}
+	g_1=(\sqrt{2} - 1)p\mu -(1-p)(1-\mu) \\
+	g_2=(\sqrt{2} - 1)(1-p)(1-\mu) - p\mu
+	\end{gather*}
+
  	Заметим, что функция $\overline{G}(p,q,\mu)$
  	является линейной по переменным $q_0$ и $q_2$ т.е.:
 
-	$$\overline{G}(p,q,\mu)=g_0(p,\mu) \: q_0+g_2(p,\mu) \: q_2+c(p,\mu)$$
+	\begin{gather*}
+	\overline{G}(p,q,\mu)=g_0(p,\mu) \: q_0+g_2(p,\mu) \: q_2+c(p,\mu)
+	\\
+	\textrm{и}
+	\\
+	\overline{G}(p,q,\mu) = 0 \sim q_2 = k(p, \mu) \cdot q_0 + c(p, \mu)	
+	\end{gather*}
 	
 	Рассматриваем функцию на полиэдре $P_{AB}(\mu):$
 	
 	$$P_{AB}(\mu)=
 	\{
-		q \in [0,1]^2, \; \mu \in (0,1) \; | \;  
-		\ell_3(q, \mu) \geqslant \ell_4(q, \mu) \cap
-	 	\ell_1(q, \mu) \leqslant \ell_2(q, \mu) 
-	\}$$
+		q \in Q \; | \;  
+		\ell_A(q, \mu) \geqslant 0 \cap
+	 	\ell_B(q, \mu) \leqslant 0
+	\},\; \mu \in (0,1) $$
 
-	Ограничение $\ell_3(q, \mu) = \ell_4(q, \mu)$ представимо в 
+	Ограничение $\ell_A(q, \mu) = 0$ и $\ell_B(q, \mu) = 0$ представимы в 
 	эквивалентном виде:
 	
-	$$\ell_A(q, \mu)=
-	-(2+(\sqrt{2}-3)\mu)q_0
-	-(2-2\sqrt{2}+(2\sqrt{2}-3)\mu)q_2
-	-3\mu+2=0$$ 	
-
-	$$\ell_A: \; q_2=k_Aq_0+c_A$$
-	
-	А ограничение $\ell_1(q, \mu) = \ell_2(q, \mu)$ в виде:
-	
-	$$\ell_B(q, \mu) = 
-	(1+\mu(2\sqrt{2}-3))q_0+
-	(1-\sqrt{2}+\mu(\sqrt{2}-3))q_2
-	+3\mu-1=0$$ 	
-
-	$$\ell_B: \; q_2=k_Bq_0+c_B$$
+	$$\ell_A(q,\mu)=0 \sim \; q_2=k_A(\mu)q_0+c_A(\mu)$$
+	$$\ell_B(q,\mu)=0 \sim \; q_2=k_B(\mu)q_0+c_B(\mu)$$
 
 	
 	\begin{figure}[H]
 		\centering
   		\includegraphics[scale=0.3]{images/graf_3_10}
-  		\caption{}
+  		\caption{Коэффициенты $k_A(\mu)$, $k_B(\mu)$ и $k(p,\mu)$ при фиксированном $p$}
+		\label{fig:k_A,k_B,k}	
 	\end{figure}	
 	
-	Имеет место неравенство 
+	Рассмотрим график \ref{fig:k_A,k_B,k}, на котором изображены значения коэффициетов
+	при фиксированном значении $p \in [0,1]$. $k_B(\mu)$ изображены красной кривой,
+	$k_A(\mu)$ синей и фиолетовой - кривая $k(p, \mu)$. Пунктирная вертикальная линия
+	обозначает точку $x$ в которой выражение $g_1=0$. Имеет место неравенство 
 	$k_A(\mu) > k_B(\mu)$ при $\mu \in (0,1)$.
 	
-	$
+	$$
 	\begin{cases}
 	k(\mu) < k_B(\mu) \textrm{ при } g_1(\mu,p) < 0  \\
 	k(\mu) > k_A(\mu) \textrm{ при } g_1(\mu,p) > 0 \\
 	\end{cases}		
-	$ 
+	$$	
 	
-	Следовательно точки максимума функции $\overline{G}(p,q,\mu)$ по переменной $q$
-	могут быть: $\{A\}, \{B\}, [B, A], [0, A], [0,B]$ и $(0,0)$. Рассмотрим три подслучая:
+	
+	Следовательно точки максимума функции $\overline{G}(p,q,\mu)$ при фикисированных
+	значениях $\mu$ и $p$ могут быть точки: 
+	$\{A\}, \{B\}, (0,0)$ и отрезки $[B, A], [0, A], [0,B]$. Где точки
+	$A(\mu)$ и $B(\mu)$ определны в \ref{eq:A} и \ref{eq:B}. 
+	Рассмотрим три подслучая:
+	
+	\newpage
 
-	(1) $0 \leqslant \mu \leqslant \frac{1}{3}$. Область $P_{AB}$ находится под прямой
-	$q_0=q_2$
-	
+	\textbf{(a)} $0 \leqslant \mu \leqslant \frac{1}{3}$. 	
 		
 	\begin{figure}[H]
-		\centering
-  		\includegraphics[scale=0.4]{images/graf_3_9}
-  		\caption{}
+    	\centering
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_9_0}
+        	\caption{$g_1 > 0 \Rightarrow q^*=A$}
+         	\label{fig:y equals x}
+     	\end{subfigure}
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_9_2}
+        	\caption{$g_1 = 0 \Rightarrow q^*=[B,A]$}
+        	\label{fig:three sin x}
+     	\end{subfigure}
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_9_1}
+        	\caption{$g_1 < 0 \Rightarrow q^*=B$}
+        	\label{fig:three sin x}
+     	\end{subfigure}
+     	\caption{}
+     	\label{fig:3_mu_0}
 	\end{figure}
+
+	%Если наклон касательной меньше $k_A$ но больше нуля, то оптимальной точкой
+	%является точка $A(\mu)$, если касатальеная паралельна оси $Oq_0$,
+	%то множеству оптимальных точек соответсвует отрезок $[B,A]$, если же наклон
+	%отрицательный то оптимальной точкой является точка $B(\mu)$.
+	%Итого оптимальные точки соответсвуют следующей системе:	
 	
-	\begin{center}
-		$\left[
-		\begin{gathered}
+	$$
+		\begin{cases}
 			g_1 > 0 \Rightarrow q^*=A \\
 			g_1 = 0 \Rightarrow q^*=[B,A] \\
 			g_1 < 0 \Rightarrow q^*=B
-		\end{gathered}
-		\right.$	
-	\end{center}
+		\end{cases}
+	$$	
 	
-	(2) $\mu \geqslant \frac{2}{3}$
-	
-		
+	\textbf{(b)} $\frac{2}{3} \leqslant \mu \leqslant 1$
+			
 	\begin{figure}[H]
-		\centering
-  		\includegraphics[scale=0.4]{images/graf_3_7}
-  		\caption{}
+    	\centering
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_7_0}
+        	\caption{$g_2 > 0 \Rightarrow q^*=B$}
+         	\label{fig:y equals x}
+     	\end{subfigure}
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_7_1}
+        	\caption{$g_2 = 0 \Rightarrow q^*=[B,A]$}
+        	\label{fig:three sin x}
+     	\end{subfigure}
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_7_2}
+        	\caption{$g_2 < 0 \Rightarrow q^*=A$}
+        	\label{fig:three sin x}
+     	\end{subfigure}
+     	\caption{}
 	\end{figure}
 	
 	\begin{center}
@@ -606,15 +661,47 @@
 		\end{gathered}
 		\right.$	
 	\end{center}	
-
-	(3) $\frac{1}{3} \leqslant \mu \leqslant \frac{2}{3}$
 	
-		
+	\newpage
+
+	\textbf{(c)} $\frac{1}{3} \leqslant \mu \leqslant \frac{2}{3}$
+	
 	\begin{figure}[H]
-		\centering
-  		\includegraphics[scale=0.4]{images/graf_3_8}
-  		\caption{}
+    	\centering
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_8_1}
+        	\caption{$g_2 > 0 \Rightarrow q^*=B$}
+     	\end{subfigure}
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_8_2}
+        	\caption{$g_1 > 0 \Rightarrow q^*=A$}
+     	\end{subfigure}
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_8_0}
+        	\caption{$
+        	\begin{cases}			
+				g_2 < 0 \\
+				g_1 < 0
+			\end{cases}	\Rightarrow q^*=(0,0)
+			$}
+     	\end{subfigure}
+    	\centering
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_8_3}
+        	\caption{$g_2 = 0 \Rightarrow q^*=[0,B]$}
+     	\end{subfigure}
+     	\begin{subfigure}[b]{0.3 \textwidth}
+        	\centering
+        	\includegraphics[width=\textwidth]{images/graf_3_8_4}
+        	\caption{$g_1 = 0 \Rightarrow q^*=[0,A]$}
+     	\end{subfigure}
 	\end{figure}
+
+
 	
 	\begin{center}
 		$\left[
@@ -633,30 +720,71 @@
 
 %-------------------------------------------------------------
 
-	Итого получим следующие $q^* = \arg \max \limits_q \overline{G}(p,q,\mu)$
-	
-	Но кроме того точки $A$ и $B$ являются оптимальными $\forall$ $p$ и $\mu$ поскольку
-	являются таковыми в $\circled{1}$ и $\circled{2}$ со страницы 5 и 6 соответсвеннно
-	$\Rightarrow$ необходимо проверить значения в точках $A;B(0,0)$ на плоскости 
-	$q\in[0,1]^2$ для функциии $\overline{G}(p,q,\mu)$. Но поскольку функция
-	$\overline{G}(p,q,\mu)$ непрерывна как композиция непрерывных функций, то
-	можно обобщить на 3-ий случай все три.
-	
-	Итого на графике выше обозначены все 
-	$q^* = \arg \max \limits_q \overline{G}(p,q,\mu)$.
-	
-	
-	$$g_1=p\mu-(1-p)(1-\mu)  \hspace{10mm}
-	g_1=0 \sim p=\frac{1-\mu}{(\sqrt{2}-2)\mu + 1}$$
+	Итого получим следующие 
 
-	$$g_2=(1-p)(1-\mu)(\sqrt{2}-1)-p\mu  \hspace{10mm}
-	g_2=0 \sim p=\frac{(1-\mu)(\sqrt{2}-1)}{(\sqrt{2}-2)\mu + (\sqrt{2}-1)}$$
+	$C(p,\mu) = \arg \max \limits_{P_{AB}} \overline{G}(p,q,\mu)
+	\begin{cases}
+	A(\mu), & g_2(p,\mu)<0 \cup \mu \leqslant \frac{1}{3} \cap g_2 < 0 \\
+	B(\mu), & g_1(p,\mu)>0 \cup \mu \geqslant \frac{2}{3} \cap g_1 > 0 \\
+	(0,0),  & g_1(p,\mu)<0 \cap g_2(p,\mu)<0 \\
+	[A(\mu), B(\mu)], 
+	& g_1(\mu)=0 \cap \mu < \frac{1}{3} \cup g_1(\mu)=0 \cap \mu > \frac{2}{3} \\
+	[0, A(\mu)], & g_2(\mu)=0 \cap \mu \in [\frac{1}{3},\frac{2}{3}] \\
+	[0, B(\mu)], & g_1(\mu)=0 \cap \mu \in [\frac{1}{3},\frac{2}{3}] \\
+	\end{cases}	
+	$	
 	
-	Поскольку на странице 3 мы установили, что $\forall \hat q \in [0,1]^2:$
-	$\exists \hat \lambda \in [0,1] k(\hat \lambda;\hat q)=0$
-	$\Rightarrow \arg \max \limits_p \overline{L}(p,\hat q, \hat \lambda)=[0,1]$
-	$\Rightarrow$ множество оптимальных пар изображено на графике
+	Но кроме того точки $A(\mu)$ и $B(\mu)$ являются оптимальными 
+	$\forall$ $p$ и $\mu$ поскольку	являются таковыми в \textbf{(1)} и \textbf{(2)}.
+	Итого в области $P_B$ оптимальной является точка $B(\mu)$,
+	в области $P_A$ оптимальной является точка $A(\mu)$,
+	и в области $P_{AB}$ оптимальной является точка $C(p, \mu)$.
+	Поскольку если $f(x)$ и $g(x)$ непрерывны на множестве $X$, то и 
+	$min(f(x), g(x))$ непрерывна на $X$, то максимум достигается в точке
+	$C$.
 	
+	$q^*(p,\mu)= \arg \max \limits_Q \overline{G}(p,q,\mu)
+	\begin{cases}
+	A(\mu), & g_2(p,\mu)<0 \cup \mu \leqslant \frac{1}{3} \cap g_2 < 0 \\
+	B(\mu), & g_1(p,\mu)>0 \cup \mu \geqslant \frac{2}{3} \cap g_1 > 0 \\
+	(0,0),  & g_1(p,\mu)<0 \cap g_2(p,\mu)<0 \\
+	[A(\mu), B(\mu)], 
+	& g_1(\mu)=0 \cap \mu < \frac{1}{3} \cup g_1(\mu)=0 \cap \mu > \frac{2}{3} \\
+	[0, A(\mu)], & g_2(\mu)=0 \cap \mu \in [\frac{1}{3},\frac{2}{3}] \\
+	[0, B(\mu)], & g_1(\mu)=0 \cap \mu \in [\frac{1}{3},\frac{2}{3}] \\
+	(0,1), & \mu = 0 \\
+	(1,0), & \mu = 1
+	\end{cases}	
+	$		
+	
+	
+	%$$g_1=p\mu-(1-p)(1-\mu)  \hspace{10mm}
+	%g_1=0 \sim p=\frac{1-\mu}{(\sqrt{2}-2)\mu + 1}$$
+
+	%$$g_2=(1-p)(1-\mu)(\sqrt{2}-1)-p\mu  \hspace{10mm}
+	%g_2=0 \sim p=\frac{(1-\mu)(\sqrt{2}-1)}{(\sqrt{2}-2)\mu + (\sqrt{2}-1)}$$
+	
+	Поскольку в пункте 3.1 мы установили, что 
+	
+	$$p^*(q,\lambda(q))=\arg \max \limits_{p \in [0,1]}
+		\overline{L}(p, q, \lambda(q))=[0,1]
+	$$
+
+	Нас интересуют оптимальные пары $(p^0,q^0)$ такие, что 
+	$\exists (\lambda, \mu) \in [0,1]^2 $:
+	
+	$$\begin{cases}
+	p^0=p^*(q^0,\lambda) \\
+	q^0=q^*(p^0,\mu)
+	\end{cases}$$
+	
+	Введём следующие множества:
+	
+	$$P_0=[0,1], \; Q_0=\{(q_0,q_2) \in Q \: | \: q_0=0 \textrm{ или } q_2 = 0\}$$
+	
+	Следующие точки являются оптимальными:
+	$$(p, q) \in P_0 \times Q_0$$
+		
 
 \end{flushleft}
 

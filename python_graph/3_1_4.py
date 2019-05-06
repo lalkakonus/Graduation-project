@@ -1,6 +1,6 @@
 from base import *
 
-m = 0.8
+m = 0.5
 
 def A(m):
     if m < 2 / 3:

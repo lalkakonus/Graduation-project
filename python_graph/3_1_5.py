@@ -1,6 +1,6 @@
 from base import *
 
-m = 0.1
+m = 0.5
 p = 0.8
 
 def A(m):
@@ -38,6 +38,12 @@ def l_3_function(x):
     c = -0.1
     return (c - g_1(p, m)*x) / g_2(p, m)
 
+k = 0.5
+def l_4_function(x):
+    global k
+    c = 0.2
+    return k*x + c 
+
 def sector_1(x, y):
     return (l_1_function(x, y) > 0) and (l_2_function(x, y) < 0) and \
             (y >= 0) and (y <= 1) and (x >= 0) and (x <= 1)
@@ -56,7 +62,7 @@ plt.ylabel(r'$q_2$', fontsize=16)
 #-----------figures---------------------
 
 sector(ax, sector_1, color='lightgreen')
-line(ax, l_3_function, color='black', label=r'$\ell_2: \; q_2=(\sqrt{2} - 1)q_0 + c$')
+# line(ax, l_4_function, color='black', label=r'$\ell: \; q_2=k(p,\mu)q_0 + c(p,\mu)$')
 
 #-----------labels--------------------
 
@@ -72,12 +78,13 @@ ax.annotate(r'$B(\mu)$',
             verticalalignment='bottom')
 ax.scatter(*B(m), c='black')
 
-x=0.5
-y=l_3_function(x)
-length = 0.1
-dx=length * (sqrt(2)-1) / (4 - 2*sqrt(2))
-dy=-length / (4 - 2*sqrt(2))
-ax.arrow(x,y,dy,dx, head_length=length*0.3, head_width=0.02, color='black')
+x = 0.5
+y = 0.5#l_4_function(x)
+length = 0.2# / sqrt(1 + k ** 2)
+dx = -length
+dy = 0#length# * k
+ax.plot([0,1], [0.5, 0.5],color='black', linewidth=2, label=r'$\ell: \; q_2=k(p,\mu)q_0 + c(p,\mu)$')
+ax.arrow(x,y,dy,dx, head_length=length*0.2, head_width=0.02, color='black')
 
 #-------------------------------------
 
