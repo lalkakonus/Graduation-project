@@ -7,3 +7,6 @@
 2. Установить текущий документ как основной *Options -> Define current document as master document*  
 3. Запустить компиляцию *Tools->Quick build*   
 4. Готовый файл **main.pdf** находится в корневом каталоге 
+
+Презентация проекта находится на онлайн платформе *Overleaf* и доступна для просмотра по ссылке:  
+https://www.overleaf.com/read/vfhnpvyqvfqf
