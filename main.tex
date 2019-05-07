@@ -1,52 +1,24 @@
-%++++++++++++++++++++++++++++++++++++++++
-% Don't modify this section unless you know what you're doing!
-\documentclass[letterpaper,12pt, reqno]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
-\usepackage{tikz}
-\usepackage{tabu}
-\usepackage{mathtools}
-\usepackage{graphicx}
-\usepackage{fixltx2e}
-\usepackage{caption}
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage{subcaption}
-\graphicspath{ {./images/} }
-\usetikzlibrary{shapes.geometric,shapes.symbols,positioning,decorations.pathmorphing}
-\usepackage{ amssymb }
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
-\usepackage{tabularx} % extra features for tabular environment
-\usepackage{amsmath}  % improve math presentation
-\DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
-\DeclareMathOperator*{\argmin}{argmin} % thin space, limits underneath in displays
-\DeclareMathOperator*{\E}{\mathbb{E}}
-\usepackage{graphicx} % takes care of graphic including machinery
-\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
-\usepackage{cite} % takes care of citations
-\usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
-\hypersetup{
-	colorlinks=true,       % false: boxed links; true: colored links
-	linkcolor=blue,        % color of internal links
-	citecolor=blue,        % color of links to bibliography
-	filecolor=magenta,     % color of file links
-	urlcolor=blue         
-}
-%++++++++++++++++++++++++++++++++++++++++
+\documentclass[a4paper, 14pt, onside, openany]{extarticle}
+
+\input{common/packages}   
+\input{common/styles}
+\input{common/setup}
+
 \begin{document}
 
-\input{include/title}
-\input{include/2_introduction}
-\input{include/2_optimal_strategies}
-\input{include/2_graphical_image_e}
-\input{include/2_s_optimal_strategies}
-\input{include/2_conclusion}
+\include{include/title}
 
-\input{include/3_introduction}
-\input{include/3_problem_defenition}
-\input{include/3_optimal_values_1}
-\input{include/3_optimal_values_2}
+\include{include/2_introduction}
+%\include{include/2_optimal_strategies_0}
+%\include{include/2_optimal_strategies}
+%\include{include/2_graphical_image_e}
+%\include{include/2_s_optimal_strategies}
+%\include{include/2_conclusion}
+
+\include{include/3_problem_defenition}
+\include{include/3_optimal_values_1}
+\include{include/3_optimal_values_2}
+\include{include/3_conclusion}
 
 \input{include/bibliogaphy}
 
