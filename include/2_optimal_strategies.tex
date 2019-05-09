@@ -1,13 +1,19 @@
 \section{Множество оптимальных стратегий}
 
-Для поиска оптимальных стратегий сначала необходимо установить значения 
-$p^*(q, \lambda) = \arg \max \limits_{p \in P} \overline L(p, q, \lambda)$ и 
-$q^*(p, \mu) = \arg \min \limits_{q \in Q} \overline G(p, q, \mu)$.
+Для поиска оптимальных стратегий сначала необходимо найти точки максимума и минимума 
+функций выигрыша \textbf{С} и \textbf{П} соответсвенно:
+
+$$
+	q^*(p, \mu) = \arg \max \limits_{q \in Q} \overline G(p, q, \mu)
+	\textrm{ и }
+	p^*(q, \lambda) = \arg \min \limits_{p \in P} \overline L(p, q, \lambda).
+$$
 
 Из статьи \cite{novikova} следует, что:
+
 \begin{equation}
 	p^*(q, \lambda)=
-	\arg \max \limits_{p \in P} \overline L(p, q, \lambda) =
+	\arg \min \limits_{p \in P} \overline L(p, q, \lambda) =
 	\begin{cases}
 		0, & q > 1 - \lambda \\
 		1, & q < 1 - \lambda \\
@@ -15,89 +21,81 @@ $q^*(p, \mu) = \arg \min \limits_{q \in Q} \overline G(p, q, \mu)$.
 	\end{cases}
 \end{equation}
 
-Из пункта 3 следует, что
+Из пункта \textbf{[ещё не написано]} следует, что
 \begin{equation}
-	q^*(p, \mu) = \arg \min \limits_{q \in Q} \overline G(p, q, \mu) =
+	q^*(p, \mu) = \arg \max \limits_{q \in Q} \overline G(p, q, \mu) =
 	\begin{cases}
 		\dfrac{\mu}{2 - \mu}, & p \geqslant 1 - \mu \\
 		\dfrac{2\mu}{1 + \mu}, & p \leqslant 1 -\mu \\
 	\end{cases}
 \end{equation}
 
+Докажем утверждение характерезующее множество оптимальных пар данной игры.
 
-\newtheorem{State}{Утверждение}
+\newtheorem{State}{Утверждение}\label{State:opt_strat_1}
 \begin{State}
-	Любая пара $(p^{*}, q^{*}) \in [0, 1]^{2}$ является оптимальной, т.е.  
-	$\forall \; (p^{*}, q^{*}) \in [0, 1]^{2} \; \exists \; 
-	(\mu, \lambda) \in M \times \Lambda$: 
-	верно \eqref{def:optimal_strategy}.
+	Любая пара $(p^*, q^*) \in [0, 1]^2$ является оптимальной, т.е.  
+	$\forall \; (p^*, q^*) \in [0, 1]^2 \; \exists \; 
+	(\mu, \lambda) \in M \times \Lambda$
+	такие, что верно \eqref{def:optimal_strategy}.
 \end{State}
 
-\begin{flushleft}
-	\textbf{Доказательство}
 
-Зафиксируем некоторую пару  $(p^{*}, q^{*}) \in [0, 1]^{2}$ и найдём такие 
-$\hat{\mu}(p^{*}, q^{*})$ и $\hat{\lambda}(p^{*}, q^{*})$ 
+\textbf{Доказательство}
+
+Зафиксируем некоторую пару  $(p^*, q^*) \in [0, 1]^2$ и найдём такие 
+$\hat \mu (p^*, q^*) \in M$ и $\hat \lambda (p^*, q^*) \in \Lambda$ 
 что верно \eqref{def:optimal_strategy} т.е. что пара стратегий является оптимальной.
 
-\textbf{(1)} Покажем оптимальность $p^{*}$:
-
-Возьмём $\hat \lambda := 1 - q^* \; \Rightarrow$  поскольку 
+\textbf{(1)} Определим $\hat \lambda(p^*, q^*)$ и покажем что 
+$p^* \in \arg \min \limits_{p \in P} \overline L(p, q^*, \hat \lambda)$.
+Возьмём $\hat \lambda := 1 - q^*$ тогда поскольку 
 $\arg \min\limits_{p \in P} \overline L(p, q^*, \hat \lambda) = [0,1]$ 
 при $ q^* = 1 - \hat \lambda$, 
-то и $p^* \in \arg \min \limits_{p \in P} \overline L(p, q^*, \hat \lambda)$
+то $p^* \in \arg \min \limits_{p \in P} \overline L(p, q^*, \hat \lambda)$.
 
+\textbf{(2)} Определим $\hat \mu(p^*, q^*)$ и покажем что 
+$q^* \in \arg \max \limits_{q \in Q} \overline G(p^*, q, \hat \mu) $.
+По имеющемуся $q^*$ решим уравнения $\dfrac{\mu}{2 - \mu}=q^*$ и
+$\dfrac{2 \mu}{1 + \mu}=q^*$, относительно переменной $\mu$:
 
-\textbf{(2)} Покажем оптимальность $q^{*}$. По имеющемуся $q^*$ 
-решим уравнения $f_1(\mu_1)=q^*$ и $f_2(\mu_2)=q^*$, где
-$f_1=\dfrac{\mu}{2 - \mu}$ и $f_2=\dfrac{2 \mu}{1 + \mu}$:
+$$
+	q^*=\dfrac{2 \mu}{1 + \mu} \Rightarrow \mu = \frac{q^*}{2 - q^*} \qquad \qquad
+	q^*=\dfrac{\mu}{2 - \mu} \Rightarrow \mu = \frac{2 q^*}{1 + q^*}
+$$
 
-\begin{gather*}
-	q^*=\dfrac{2 \mu_2}{1 + \mu_2} \Rightarrow \mu_2 = \frac{q^*}{2 - q^*} \\
-	q^*=\dfrac{\mu_1}{2 - \mu_1} \Rightarrow \mu_1 = \frac{2 q^*}{1 + q^*}
-\end{gather*} 
-
-
-Заметим, что при $q^* \in [0, 1]$ верно $\mu_2 \leqslant \mu_1$.
+Введём обозначения $\mu_1(q) = \dfrac{q}{2 - q}$ и 
+$\mu_2(q) = \dfrac{2 q}{1 + q}$. Заметим, что при $q^* \in [0, 1]$ 
+верно $0 \leqslant \mu_2(q^*) \leqslant \mu_1(q^*) \leqslant 1$.
 В таком случае поскольку $1 - p^* \in [0, 1]$, то при фиксированных переменных 
 $(p^*, q^*)$ будет реализован один и только один из 3-х вариантов:
 
 \textbf{(a)}
-$1 - p^* \leqslant \mu_2$, т.е.  $1 - p^* \leqslant \dfrac{q^*}{2 - q^*}$.
-В этом случае $\hat \mu := \mu_1 = \dfrac{2 q^*}{1 + q^*}$.
+$1 - p^* \leqslant \mu_2(q^*)$, т.е.  $1 - p^* \leqslant \dfrac{q^*}{2 - q^*}$.
+Возьмём $\hat \mu := \mu_1 = \dfrac{2 q^*}{1 + q^*}$.
 
 Действительно, при таком выборе $\hat{\mu}$ имеем: 
-
 \begin{gather*}
 	1 - p^* \leqslant \mu_2 \leqslant \mu_1 = \hat \mu \Rightarrow
-	p^* + \hat \mu - 1 \geqslant 0 \Rightarrow 
+	p^* \geqslant 1 - \hat \mu \Rightarrow 
 	\\	
 	\Rightarrow \arg \max \limits_{q \in Q} \overline G(p^*, q, \hat \mu) =
 	\dfrac{\hat{\mu}}{2-\hat{\mu}} =
 	\dfrac{\dfrac{2 q^*}{1 + q^*}}{2 - \dfrac{2 q^*}{1 + q^*}} =
-	q^* \Rightarrow
+	q^*
 \end{gather*} 
 
-$$
-	\textrm{при}
-	\begin{cases}
-		\hat \mu = \dfrac{2 q^*}{1 + q^*} \\
-		\hat \lambda = 1 - q^* \\
-		1 - p^* \leq \frac{q^*}{2 - q^*}
-	\end{cases}
-	(p^*, q^*) - \textrm{оптимальная пара}
-$$
 
 \textbf{(b)}
-$\mu_2 < 1-p^* \leqslant \mu_1$, т.е.  
+$\mu_2(q^*) < 1-p^* \leqslant \mu_1(q^*)$, т.е.  
 $\dfrac{q^*}{2 - q^{*}} < 1 - p^* \leqslant \dfrac{2 q^*}{1 + q^*}$.
-В этом случае $\hat \mu := \mu_1 = \dfrac{2 q^*}{1 + q^*}$.
+Возьмём $\hat \mu := \mu_1 = \dfrac{2 q^*}{1 + q^*}$.
 Действительно, при таком выборе $\hat \mu$ имеем:
 
 \begin{gather*}
 	1 - p^* \leq \mu_1 = \hat \mu 
 	\; \Rightarrow \;
-	p^* + \hat \mu - 1 \geqslant 0 \Rightarrow 
+	p^* \geqslant 1 - \hat \mu \Rightarrow 
 	\\
 	\Rightarrow  \arg \max \limits_{q \in Q} \overline G(p^*, q, \hat \mu) =
 	\dfrac{\hat \mu}{2 - \hat \mu} =
@@ -105,46 +103,39 @@ $\dfrac{q^*}{2 - q^{*}} < 1 - p^* \leqslant \dfrac{2 q^*}{1 + q^*}$.
 	q^* \Rightarrow
 \end{gather*} 
 
-$$
-\textrm{при}
-\begin{cases}
-	\hat \mu = \dfrac{2 q^*}{1 + q^*} \\
-	\hat \lambda = 1 - q^* \\
-	\dfrac{q^*}{2 - q^*} < 1 - p^* \leqslant \dfrac{2 q^*}{1 + q^*}
-\end{cases}
-(p^*, q^*) - \textrm{оптимальная пара}
-$$
+
 
 \textbf{(c)} 
-$\mu_1 \leqslant 1-p^*$ т.е. $\dfrac{2q^*}{1 + q^*} < 1 - p^*$.
-В этом случае $\hat \mu := \mu_2 = \dfrac{q^*}{2 - q^*}$ 
-
-действительно, при таком выборе $\hat \mu$ имеем 
+$\mu_1(q^*) < 1 - p^*$ т.е. $\dfrac{2 q^*}{1 + q^*} < 1 - p^*$.
+Возьмём $\hat \mu := \mu_2 = \dfrac{q^*}{2 - q^*}$
+Действительно, при таком выборе $\hat \mu$ имеем:
 
 \begin{gather*}
-	1 - p^* \geqslant \mu_2 = \hat \mu \Rightarrow
-	p^*+\mu-1 \leqslant 0 \Rightarrow 
+	1 - p^* > \mu_1 \geqslant \mu_2 = \hat \mu \Rightarrow
+	p^* \leqslant 1 - \hat \mu \Rightarrow 
 	\\	
 	\Rightarrow \arg \max \limits_{q \in Q} \overline G(p^*, q, \hat \mu) =
 	\dfrac{2 \hat \mu}{1 + \hat \mu} =
 	\dfrac{2 \dfrac{q^*}{2 - q^*}}{1 + \dfrac{q^*}{2 - q^*}} =
-	q^* \Rightarrow
+	q^*.
 \end{gather*}
+
+Теперь для любой точки $(p^*,q^*) \in [0,1]^2$ можем указать
+$(\hat \mu(p^*,q^*), \hat \lambda(p^*,q^*))$ такие, что верно \eqref{def:optimal_strategy},
+а именно:
  
 $$
-\textrm{при}
+(\hat \mu(p^*,q^*), \hat \lambda(p^*,q^*)) = 
 \begin{cases}
-	\hat\mu=\dfrac{q^{*}}{2-q^{*}} \\
-	\hat\lambda = 1 - q^{*} \\
-	\dfrac{2q^{*}}{1+q^{*}} < 1-p^{*} \\
+	\Big(\dfrac{q^*}{2 - q^*}, \: 1 - q^* \Big), &
+	\dfrac{2 q^*}{1 + q^*} < 1 - p^*
+	\\
+	\Big(\dfrac{2 q^*}{1 + q^*}, \: 1 - q^* \Big), &
+	1 - p^* \leqslant \dfrac{q^*}{2 - q^*}
+	\\
+	\Big(\dfrac{2 q^*}{1 + q^*}, \: 1 - q^*\Big), & 	
+	\dfrac{q^*}{2 - q^{*}} < 1 - p^* \leqslant \dfrac{2 q^*}{1 + q^*}
 \end{cases}
-(p^*, q^*) - \textrm{оптимальная пара}
 $$
- 
-\end{flushleft}
-
-
-Таким образом при имеющихся $(p^{*},q^{*})$ сначала надо определить в какой из вариантов 1-3 пара попадает, затем
-по соответсвующим равенствам найти $\hat\mu$ и $\hat\lambda$.
 
 \textbf{Утверждение доказано.}
