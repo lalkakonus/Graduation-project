@@ -4,7 +4,7 @@
 соответсвующих оптимальных пар 
 $(p^*(\hat \mu, \hat \lambda), q^*(\hat \mu, \hat \lambda)) \in P \times Q$. 
 Рассмотрим все возможные сочетания значений для $p^*$ и $q^*$ в системах 
-\eqref{eq:argmin_L_1} и \eqref{eq:argmax_G_1}, что даст нам 6 следующих систем:
+\eqref{eq:argmin_L_1} \eqref{eq:argmax_G_1}, что даст нам 6 следующих систем:
 
 \hspace{5mm}
 
@@ -192,9 +192,18 @@ $(p^*, q^*) \in [0, 1 - \mu] \times \{\frac{2\mu}{1 + \mu}\}$.
 
 \hspace{5mm}
 
+Введём обозначения для множества оптимальных пар:
+
+$$
+	\mathbb{O} = \{
+		(p, q) \: | \: p \in P, q \in Q 
+		\textrm{ такие что верно \eqref{def:optimal_strategy}}
+	\}
+$$
+
 Итого получаем:
 
-$(p^*(\mu, \lambda), q^*(\mu, \lambda))=
+$\mathbb{O} =
 \begin{cases}
 	(0, \, 1), & \mu = 1, \: \lambda \in (0,1] 
 	\\
@@ -220,19 +229,42 @@ $
 множества $(\mu, \lambda)$ которые они задают имели
 пустое пересечение.
 
+$\mathbb{O} =
+\begin{cases}
+	(1, \, 0), & \mu = 0, \lambda \in [0, 1) 
+	\\
+	[0, 1] \times \{0\}, & 
+	\mu=0, \lambda =1
+	\\
+	[0, 1] \times \{1\}, &
+	\mu = 1, \lambda = 0
+	\\
+	\{1\} \times \{\dfrac{\mu}{2-\mu}\}, &
+	\mu \in (0,1), \lambda \in (0, \dfrac{1 - \mu}{1 + \mu}]
+	\\
+	\{1\} \times \{\frac{\mu}{2-\mu}\} \cup
+	[0,1-\mu] \times \{\frac{2\mu}{1+\mu}\} &
+	\mu \in (0,1), \lambda = \dfrac{1-\mu}{1+\mu}
+	\\
+	(0, \dfrac{2\mu}{1 + \mu}) \cup
+	(1, \dfrac{\mu}{2 - \mu}) &
+	\mu \in [(, 1), \lambda \in 
+	[0, 2\dfrac{1 - \mu}{2 - \mu}] \cap (\dfrac{1 - \mu}{1 + \mu}, 	1]
+	\\
+	(0, \dfrac{2\mu}{1+\mu}) \cup
+	[1 - \mu, 1] \times \{\dfrac{\mu}{2 - \mu}\} &
+	\mu \in (0, 1), \lambda = 2\dfrac{1 - \mu}{2 - \mu}
+	\\
+	(0, \dfrac{2\mu}{1 + \mu}) &
+	\mu \in (0, 1), \lambda \in (2\dfrac{1 - \mu}{2 - \mu}, 1]
+	\\
+	(0, 1) & \mu = 1, \lambda \in (0, 1] 
+\end{cases}
+$
 
-Теперь на квадрате $(p, q) \in [0, 1]^2$ рассмотрим все области,
-в которых множества оптимальных пар постоянны. Введём обозначения
-для множества оптимальных стратегий:
-
-$$
-	\mathbb{O} = \{
-		(p, q) \: | \: p \in P, q \in Q 
-		\textrm{ такие что верно \eqref{def:optimal_strategy}}
-	\}
-$$
-
-\begin{flushleft}
+Каждое из множеств в условиях системы изображено на отдельном графике
+на рисунке снизу. Визульно видно, что были рассмотрены все точки
+множества $(\mu, \lambda) \in [0,1]^2$
 
 \begin{figure}[H]
 	\centering
@@ -262,77 +294,7 @@ $$
 			$		
 		}
 	\end{subfigure}
-	\caption{}
-\end{figure}
-
-\textbf{(1)} 
-$\mu = 0, \lambda \in [0, 1):$
-$$
-	\begin{cases}
-		p^* = 1 \\ 
-		q^* = 0 
-	\end{cases} \cup \quad
-	\begin{cases}
-		p^* = 1 \\
-		q^* = \dfrac{\mu}{2-\mu} = \{\mu = 0 \} = 0
-	\end{cases}
-$$
-
-Mножествo оптимальных стратегий 
-$\mathbb{O} = \{ (1, 0) \}$
-
-\hspace{5mm}
-
-\textbf{(2.1)}
-$\mu=0, \lambda =1:$
-$$
-	\begin{cases}
-		p^* \geqslant 1 - \mu = \{\mu = 0\} = 1 \\
-		q^* = \dfrac{\mu}{2 - \mu} = \{\mu = 0\} = 0
-	\end{cases} \cup \quad
-	\begin{cases}
-		p^* \leqslant 1 - \mu = \{\mu = 0\} = 1 \\
-		q^* = \dfrac{2\mu}{1 + \mu} = \{\mu = 0\} = 0 
-	\end{cases}
-$$
-
-Mножествo оптимальных стратегий 
-$\mathbb{O} = [0, 1] \times \{0\}$, где $\times$ - 
-это декартово произведение.
-
-\hspace{5mm}
-
-\textbf{(2.2)}
-$\mu = 1, \lambda = 0:$
-$$
-	\begin{cases}
-		p^* \geqslant 1-\mu = \{\mu=1\}=0 \\
-		q^* = \dfrac{\mu}{2-\mu} = \{\mu=1\}=1
-	\end{cases} \cup \quad
-	\begin{cases}
-		p^* \leqslant 1 - \mu = \{\mu = 1\} = 0\ \\
-		q^* = \dfrac{2\mu}{1 + \mu} = \{\mu = 1\} = 1 
-	\end{cases}
-$$
-
-Mножествo оптимальных стратегий 
-$\mathbb{O} = [0, 1] \times \{1\}$
-
-\hspace{5mm}
-
-\textbf{(3)}
-$\mu \in (0,1), \lambda \in (0, \dfrac{1 - \mu}{1 + \mu}]$: 
-$$
-	\begin{cases}
-		p^* = 1 \\ 
-		q^* = \dfrac{\mu}{2 - \mu} 
-	\end{cases}
-$$
-
-Mножествo оптимальных стратегий 
-$\mathbb{O} = \{1\} \times \{\dfrac{\mu}{2-\mu}\}$ 
-
-\begin{figure}[H]
+	\newline	
 	\centering
 	\begin{subfigure}[b]{0.3 \textwidth}
 		\includegraphics[width=\linewidth]{part_2/graf_3_4}
@@ -355,73 +317,15 @@ $\mathbb{O} = \{1\} \times \{\dfrac{\mu}{2-\mu}\}$
 			$\mu \in (0, 1), \lambda = 2\dfrac{1 - \mu}{2 - \mu}$: 
 		}
 	\end{subfigure}
-	\caption{}
-\end{figure}
-
-\hspace{5mm}
-
-\textbf{(4)}
-$\mu \in (0,1), \lambda = \dfrac{1-\mu}{1+\mu}$:
-$$
-	\begin{cases}
-		p^* \in [0, 1 - \mu] \cup \{1\} \\
-		q^* = \dfrac{\mu}{2 - \mu}
-	\end{cases}
-$$
-
-Mножествo оптимальных стратегий 
-$\mathbb{O} = \{1\} \times \{\frac{\mu}{2-\mu}\} \cup
-[0,1-\mu] \times \{\frac{2\mu}{1+\mu}\}$ 
-
-\hspace{5mm}
-
-\textbf{(5)}
-$\mu \in [(, 1), \lambda \in 
-[0, 2\dfrac{1 - \mu}{2 - \mu}] \cap (\dfrac{1 - \mu}{1 + \mu}, 1]$: 
-$$
-	\begin{cases}
-		p^* = 0 \\
-		q^* = \dfrac{2\mu}{1 + \mu}
-	\end{cases}  \cup \quad
-	\begin{cases}
-		p^* = 1 \\
-		q^* = \dfrac{\mu}{2 - \mu}
-	\end{cases}
-$$
-
-Mножествo оптимальных стратегий 
-$\mathbb{O} = (0, \dfrac{2\mu}{1 + \mu}) \cup
-(1, \dfrac{\mu}{2 - \mu})$ 
-
-\hspace{5mm}
-
-\textbf{(6)}
-$\mu \in (0, 1), \lambda = 2\dfrac{1 - \mu}{2 - \mu}$: 
-$$
-	\begin{cases}
-		p^* = 0 \\
-		q^* = \dfrac{2\mu}{1 + \mu}
-	\end{cases}  \cup \quad
-	\begin{cases}
-		p^* \in [0, 1 - \mu] \\
-		q^* = \dfrac{\mu}{2 - \mu} 
-	\end{cases}
-$$
-
-Mножествo оптимальных стратегий 
-$\mathbb{O} =(0, \dfrac{2\mu}{1+\mu}) \cup
-[1 - \mu, 1] \times \{\dfrac{\mu}{2 - \mu}\}$ 
-
-\begin{figure}[H]
-	\centering
-	\begin{subfigure}[b]{0.4 \textwidth}
+	\newline
+	\begin{subfigure}[b]{0.3 \textwidth}
 		\includegraphics[width=\linewidth]{part_2/graf_3_7}
 		\caption{
 			$\mu \in (0, 1), 
-			\lambda \in (2\dfrac{1 - \mu}{2 - \mu}, 1]$		
+			\lambda \in (2\frac{1 - \mu}{2 - \mu}, 1]$		
 		}
 	\end{subfigure}
-	\begin{subfigure}[b]{0.4 \textwidth}
+	\begin{subfigure}[b]{0.3 \textwidth}
 		\includegraphics[width=\linewidth]{part_2/graf_3_8}
 		\caption{
 			$\mu = 1, \lambda \in (0, 1] $		
@@ -429,36 +333,3 @@ $\mathbb{O} =(0, \dfrac{2\mu}{1+\mu}) \cup
 	\end{subfigure}
 	\caption{}
 \end{figure}
-
-\hspace{5mm}
-
-\textbf{(7)}
-$\mu \in (0, 1), \lambda \in (2\dfrac{1 - \mu}{2 - \mu}, 1]$: 
-$$
-	\begin{cases}
-		p^* = 0 \\
-		q^* = \dfrac{2\mu}{1 + \mu}
-	\end{cases}
-$$
-
-Mножествo оптимальных стратегий 
-$\mathbb{O}  = (0, \dfrac{2\mu}{1 + \mu})$
-
-\hspace{5mm}
-
-\textbf{(8)}
-$\mu = 1, \lambda \in (0, 1] $: 
-$$
-	\begin{cases}
-		p^* = 0 \\
-		q^* = 1 \\
-	\end{cases}  \cup \quad
-	\begin{cases}
-		p^* = 0 \\
-		q^* = \dfrac{2\mu}{1 + \mu} = \{\mu = 1\} = 1 \\
-	\end{cases}
-$$
-
-Mножествo оптимальных стратегий 
-$\mathbb{O} =(0, 1)$ 
-\end{flushleft}

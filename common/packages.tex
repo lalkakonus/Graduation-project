@@ -18,11 +18,13 @@
 \usepackage{cite} % takes care of citations
 \usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
 
+
 \usetikzlibrary{shapes.geometric,shapes.symbols,positioning,decorations.pathmorphing}
 
 \DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
 \DeclareMathOperator*{\argmin}{argmin} % thin space, limits underneath in displays
-\DeclareMathOperator*{\E}{\mathbb{E}}
+\DeclareMathOperator*{\Motimes}{\text{\raisebox{0.25ex}{\scalebox{0.8}{$\bigotimes$}}}}
+
 
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
