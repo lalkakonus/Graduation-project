@@ -130,7 +130,8 @@ $0 \leqslant \ell(q) \leqslant 1$.
 
 Следовательно $\forall \; q=(q_0, q_2) \in Q \;
 \exists \; \lambda \in [0,1]: \; k(\lambda,q)=0$.
-$$
+\begin{equation}
+	\label{eq:p*}
 	p^*(\lambda,q)=
 	\arg \min \limits_{p \in [0, 1]} \overline{L}(p,q,\lambda)=
 	\begin{cases}
@@ -138,5 +139,6 @@ $$
 		1, & \lambda \in \big[0, \ell(q) \big) \\
 		[0,1], & \lambda=\ell(q)
 	\end{cases},
-$$	
+\end{equation}
+
 где $\ell(q)=\dfrac{1 - q_2 + (\sqrt{2} - 1)q_0}{2+(\sqrt{2}-2)(q_0-q_2)}$
