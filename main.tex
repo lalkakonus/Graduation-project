@@ -1,30 +1,36 @@
-\documentclass[a4paper, 14pt, onside, openany]{extarticle}
+\documentclass[oneside,senior,etd]{BYUPhys}
 
 \input{common/packages}   
 \input{common/styles}
 \input{common/setup}
 
+\input{include/title}
+
 \begin{document}
 
-\include{include/include}
+	\makepreliminarypages % Титульная страница
 
-\tableofcontents
-\clearpage
+	\tableofcontents % Оглавление
+	
+	\input{include/introduction} % Введение
+	\include{include/problem_defenition} % Постановка задачи
+	\include{include/1_problem_defenition} % Постановка задачи при параметре
+% дискретизации Т=1
+	\input{include/1_optimal_strategies_a} % Решения игры для случая Т=1
+	%\input{include/1_optimal_strategies_b} % разбито на два файла
 
-\include{include/2_introduction}
-%\include{include/2_problem_defenition}
-%\include{include/2_optimal_strategies}
-%\include{include/2_s_optimal_strategies}
-%\include{include/2_graphical_image_e}
-%\include{include/2_s_profit}
+	\include{include/2_problem_defenition} % Постановка задачи при параметре
+% дискретизации Т=2
+		\include{include/2_optimal_values_1}
+		\include{include/2_optimal_values_2}
 
-%\include{include/3_problem_defenition}
-%\include{include/3_optimal_values_1}
-%\include{include/3_optimal_values_2}
-%\include{include/3_conclusion}
+	\include{include/graphical_image_e}
+	\include{include/s_profit}
 
-\newpage
-\bibliographystyle{plain}
-\bibliography{include/bibliogaphy}
+	%\include{include/conclusion} % Заключение
+	
+	% Для соответствия требованиям об оформлении списка литературы
+	\bibliographystyle{gost71u} 
+	\bibliography{include/bibliogaphy} % Список литературы
 
 \end{document}

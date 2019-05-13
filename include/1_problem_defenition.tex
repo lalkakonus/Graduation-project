@@ -1,0 +1,114 @@
+\section{Постановка задачи при парметре дискретизации Т=1}
+
+Сначала рассмотри случай с параметром $T=1$. Тогда множество $X^1=\{0, 1\}$.
+Игроки используют смешанные стратегии т.е. распределение над своими чистыми 
+стратегиями.
+Чистыми стратегиями игроков \textbf{С} и \textbf{П} являются $X^1=\{0, 1\}$ и 
+$Y=\{1,2\}$ соответсвенно. Эти множества дискретны и равномощны, поэтому 
+распределения задаются в виде векторов: 
+$$
+	(p_1, p_2) \in P_2 = \{
+		(p_1, p_2) \in \mathbb{R}_+^2 \; | \; p_1 + p_2 = 1)
+	\},
+$$
+где $
+	\mathbb{R}_+^n = \{ x \in \mathbb{R}^n \: | \: 
+	x_i \geqslant 0 \; i = 1, \ldots n\}
+$.
+Множество $Q_2=P_2$, введено для наглядности. 
+Смешанные стратеги игроков \textbf{С} и \textbf{П} будем обозначать
+$q=(q_0,q_1) \in Q_2$ и $p=(p_0,p_1) \in P_2$ соответсвенно, причём:
+
+\begin{equation}
+\begin{tabu} to 0.9 \textwidth {X[c] X[c]}
+	$P(X=0)=q_0$ & $P(Y=1)=p_0$ \\
+	$P(X=1)=q_1$ & $P(Y=2)=p_1$ \
+	\\
+	\end{tabu}	
+\label{eq:probability_1}
+\end{equation}
+
+Введём обозначения $q := q_1$ и $p := p_1$, тогда $q_0 = 1-q$ и $p_0 = 1 - p$. 
+Игрок \textbf{С} использует смешаную стратегию  $(q_0,q_1)$, тогда
+его векторный критерий \eqref{eq:player_criterion} приобретает вид: 
+
+$$
+	F_\textrm{C}(q,y)=
+	\big \langle
+		q_0\frac{y\sqrt{0}}{2} + 
+		q_1\frac{y\sqrt{1}}{2};
+		q_0\frac{\sqrt{1}}{y} +
+		q_1\frac{\sqrt{0}}{y}
+	\big \rangle 
+	= 	
+	\big \langle
+		\frac{q_1y}{2};
+		\frac{q_0}{y}
+	\big \rangle 
+$$
+
+Игрок \textbf{П} использует смешаную стратегию  $(p_0,p_1)$, тогда
+его векторный критерий \eqref{eq:player_criterion} приобретает вид: 
+
+\begin{gather*}
+	F_\textrm{П}(x,p)=
+	\big \langle 
+		(1-p)\frac{1 \cdot \sqrt{x}}{2} + p \frac{2 \cdot \sqrt{x}}{2}; \;
+		(1-p)\frac{\sqrt{1-x}}{1}+p\frac{\sqrt{1-x}}{2} 
+	\big \rangle=
+	\\
+	=\frac{1}{2}
+	\big \langle
+		(p+1)\sqrt{x}; \;
+		(2-p)\sqrt{1-x}
+	\big \rangle
+\end{gather*}
+	
+\vspace{5mm}
+
+Далее игрок \textbf{С} использует \textit{обратную логическую свёртку}
+\eqref{eq:germeyer_scalarization}:
+
+$$
+	G(y, q, \mu) = 
+	\min \limits_{i: \mu_i > 0} \{\frac{q_1y}{2\mu_0};\frac{q_0}{y\mu_1}\},
+$$
+
+a игрок \textbf{П} использует \textit{линейную свёртку}
+\eqref{eq:linear_scalarization}:
+
+$$
+	L(p, x, \lambda) = 
+	\lambda_0 (p+1)\sqrt{x} + \lambda_1 (2-p)\sqrt{1-x}
+$$
+
+После чего игрок \textbf{С} осредняет свёртку критерия по стратегиям игрока \textbf{П},
+т.е. по переменной $y$:
+
+$$
+	\overline G(p,q,\mu)=
+	p\min{\{\frac{q}{\mu};
+	\frac{1-q}{2(1-\mu)}\}}
+	+(1-p)\min\{\frac{q}{2\mu};\frac{1-q}{1-\mu}\},
+$$
+
+а игрок \textbf{П} осредняет свёртку критерия по стратегиям игрока \textbf{С},
+т.е. по переменной $x$:
+
+$$
+	\overline L(p, q, \lambda) =
+	\frac{1}{2}\big \{q(3\lambda+p-2)+(2-p)(1-\lambda)\big \}.
+$$
+
+Мы установили функции выигрыша игроков. Теперь задачу можно формализовать и представить как семейство игр двух игроков в нормальный форме:
+
+$$
+	\bigg \langle 
+		\{\textrm{\textbf{С}, \textbf{П}}\},		
+		\{Q, \: P\},		
+		\{\overline G(p,q,\mu), - \overline L(p,q,\lambda) \}
+	\bigg \rangle 
+	, \; (\lambda, \mu) \in \Lambda \times  M
+$$
+
+Для нас представляет интерес множество оптимальных точек \eqref{def:optimal_strategy}.

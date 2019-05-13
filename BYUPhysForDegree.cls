@@ -59,6 +59,7 @@
 \newcommand{\GrText}[1]{\gdef\@GrText{#1}}
 \newcommand{\AcadGroup}[1]{\gdef\@AcadGroup{#1}}
 \newcommand{\AdvisorText}[1]{\gdef\@AdvisorText{#1}}
+\newcommand{\ConsultantText}[1]{\gdef\@ConsultantText{#1}}
 
 \newcommand{\ApprovalText}[1]{\gdef\@ApprovalText{#1}}
 \newcommand{\ApprovalAText}[1]{\gdef\@ApprovalAText{#1}}
@@ -72,7 +73,6 @@
 
 % The full name of the degree
 \newcommand{\degree}[1]{\gdef\@degree{#1}}
-
 % The name of this document (thesis/dissertation)
 \newcommand{\docname}[1]{\gdef\@docname{#1}}
 
@@ -103,6 +103,9 @@
 % The name of the advisor
 \newcommand{\Advisor}[1]{\gdef\@Advisor{#1}}
 \newcommand{\AdvisorDegree}[1]{\gdef\@AdvisorDegree{#1}}
+% The name of the consultant
+\newcommand{\Consultant}[1]{\gdef\@Consultant{#1}}
+\newcommand{\ConsultantDegree}[1]{\gdef\@ConsultantDegree{#1}}
 
 % The name of the committee member 2
 \newcommand{\MemberA}[1]{\gdef\@MemberA{#1}}
@@ -146,6 +149,9 @@
 %  \degree{Bachelor of Science}
   \docname{Master Thesis}
   \Advisor{Advisor}
+  \Consultant{}
+  \ConsultantDegree{}
+  \ConsultantText{}
   \MemberA{Committee Member A}
   \MemberB{Committee Member B}
   \MemberC{Committee Member C}
@@ -198,8 +204,8 @@
   \newcommand{\makepreliminarypages}{
     \preliminarymargins 
     \titlepage 
-    %\copyrightpage 
-    %\seniorapprovalpage 
+%	\copyrightpage 
+%	\seniorapprovalpage 
     \abstractpage 
 %    \acknowledgmentspage 
     \fixmargins
@@ -298,7 +304,7 @@
 % Load the book class  
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}} 
 \ProcessOptions\relax 
-\LoadClass[a4,14pt]{extarticle}
+\LoadClass[a4,12pt]{article}
 
 % The afterpage package is required to make single sided formal pages 
 % in a double sided environment
@@ -374,26 +380,31 @@
 	    \thispagestyle{empty}
 	    \begin{center}
 	    \providecommand\pdfbookmark[3][]{} \pdfbookmark[1]{Title Page}{bm:Title}    
-		\includegraphics[height=4cm,keepaspectratio]{./gzlogo.eps}\\[0.1cm]
+		\includegraphics[height=4cm,keepaspectratio]{./gzlogo.png}\\[0.1cm]
 	    %\vspace*{0.375in}
 	    {\large \@University\\}
 	    \@Faculty\\
 	    {\footnotesize \@Chair\\}
 	    {\scriptsize \@Lab\\[\baselineskip]}
 	    \vfill
-	    {\large \@docname \\[\baselineskip]
-	    %\HRule \\[0.4cm]
-	    \textbf{\@TitleTop}\\
-	    \textbf{\@TitleBottom}\\}
+	    {\Large \@Author \\[\baselineskip]}
+	    {%\HRule \\[0.4cm]
+	     \Large \textbf{\@TitleTop}\\
+	     \textbf{\@TitleBottom}\\[\baselineskip]
+	      \large \@docname \\[\baselineskip] }
 	    %\HRule \\[1.5cm]
 	    \normalsize
 	    \vfill
 	    \begin{flushright}
-	    \emph{\@AuthorText:\\}
-	    {\small \@GrText~\@AcadGroup\\}
-	    {\large \@Author \\[\baselineskip]}
-	    \emph{\@AdvisorText:\\}
-	    {\large ~ \@AdvisorDegree~ \@Advisor\\}
+	   % \emph{\@AuthorText:\\}
+	   % {\small \@GrText~\@AcadGroup\\}
+	    
+	    \textbf{\@AdvisorText:\\}
+	    {~ \@AdvisorDegree~ \\ \@Advisor\\}
+	    
+	    
+	    \emph{\@ConsultantText\\}
+	    {\large ~ \@ConsultantDegree~ \@Consultant\\}
 	    \end{flushright}
 	    \vfill
 
@@ -558,6 +569,7 @@
 % ========================= Abstract ===================================
 
 \newcommand{\abstractpage}{
+
     \thispagestyle{empty}
     \begin{abstractenv}
     \begin{center}
@@ -570,10 +582,19 @@
     \end{center}   
     \renewcommand{\baselinestretch}{1.33}\small\normalsize
     \@Abstract
-     \vfill
+    \vfill	
 
+    \begin{center}
+ 	%\providecommand\pdfbookmark[3][]{} \pdfbookmark[0]{Abstract}{bm:Abstract}    
+    \vspace*{0.375in}
+    {\bf Abstract}\\[1\baselineskip]
+    {\large \@TitleTopEng\\
+    \@TitleBottomEng}\\[1\baselineskip]
+    {\em \@AuthorEng}\\[\baselineskip]
+    \end{center}   
+    \renewcommand{\baselinestretch}{1.33}\small\normalsize
+    \@AbstractEng
 
-    
     \end{abstractenv}
     \clearemptydoublepage
   }
@@ -583,7 +604,8 @@
 %    \renewcommand{\baselinestretch}{1}\small\normalsize
 %    \thispagestyle{empty}
 %    \begin{center}
-%    \providecommand\pdfbookmark[3][]{} \pdfbookmark[0]{Acknowledgments}{bm:Acknowledge}    
+%    \providecommand\pdfbookmark[3][]{} 
+% \pdfbookmark[0]{Acknowledgments}{bm:Acknowledge}    
 %    \vspace*{0.375in}
 %    {\Large \@AcknowledgmentsText}\\[3\baselineskip]
 %    \end{center}

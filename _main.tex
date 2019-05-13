@@ -1,0 +1,104 @@
+\documentclass[oneside,senior,etd]{BYUPhys}
+
+%\input{common/packages}   
+%\input{common/styles}
+%\input{common/setup}
+
+\usepackage[utf8]{inputenc}
+\usepackage{rotating} 
+
+\usepackage[english, russian]{babel}
+\usepackage{amsfonts} % Пакеты для математических символов и теорем
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx} % Пакеты для вставки графики
+\usepackage{subfig}
+\usepackage{color}
+\usepackage[unicode]{hyperref}
+\usepackage[nottoc]{tocbibind} % Для того, чтобы список литературы отображался в оглавлении
+\usepackage{algorithmic} % Для записи алгоритмов в псевдокоде
+\usepackage{algorithm}
+\usepackage{verbatim} % Для вставок заранее подготовленного текста в режиме as-is
+\usepackage{listings}
+
+\usepackage{commath}
+\newcommand\Tau{\mathcal{T}}
+\newcommand{\R}{\mathbb{R}}
+
+\Chair{Кафедра Исследования Операций}
+\Lab{~}
+\Year{2019}
+  \Month{Июнь}
+  \City{Москва}
+  \AuthorText{Автор}
+  \Author{Кононов Сергей Владиславович}
+  \AuthorEng{Kononov Sergey}
+  \AcadGroup{411}
+
+  \TitleTop{Исследование модельной игры преподавателя и студента}
+  \TitleBottom{с применением свёртки Гермейера у студента} % leave empty if you don't need it
+  \TitleTopEng{Research into teacher-student model game with use of}
+  \TitleBottomEng{Germeyer's scalarization for student} % leave empty if you don't need it  
+  \docname{Выпускная квалификаионная работа}
+  \Advisor{Новикова Наталья Михайловна}  
+  \AdvisorDegree{д-р физ.-мат. наук\\}
+
+\Abstract{
+В данной работе исследуются вопрос параметризации и аппроксимации множества Парето при помощи обратной логической свертки ($O$$\Lambda$$C$).
+Проводится обзор методов решения для частной задачи на языке программирования Python.
+}
+\AbstractEng{Abstract}
+
+
+%%%% DON'T change this. It is here because .sty does not support cyrillic cp properly %%%%
+\University{Московский Государственный Университет имени М.В.Ломоносова}
+\Faculty{Факультет Вычислительной Математики и Кибернетики}
+\GrText{группа}
+\AdvisorText{Научный руководитель}
+\AbstractText{Аннотация}
+
+\begin{document}
+\fixmargins
+\makepreliminarypages
+
+\oneandhalfspace
+
+\tableofcontents
+
+\tableofcontents
+\clearpage
+
+\cite{blackwell}
+
+%\include{include/2_introduction}
+%\include{include/game_model}
+%\include{include/2_problem_defenition}
+%\include{include/2_optimal_strategies}
+%\include{include/2_s_optimal_strategies}
+%\include{include/2_graphical_image_e}
+%\include{include/2_s_profit}
+
+%\include{include/3_problem_defenition}
+%\include{include/3_optimal_values_1}
+%\include{include/3_optimal_values_2}
+%\include{include/3_conclusion}
+
+\newpage
+\bibliographystyle{plain}
+\bibliography{include/bibliogaphy}
+
+%\include{Chapter1} % Введение
+%\include{Chapter2} % Постановка задачи
+%\include{Chapter3} % Решение задачи
+%\include{Chapter4} % Задача с неопределенностью
+%\include{Chapter5} % Список литературы
+
+
+%\nocite{*}
+%\bibliographystyle{gost71u} % Для соответствия требованиям об %оформлении списка литературы
+%\bibliography{references}
+
+% \include{Appendix} 
+
+\end{document}

@@ -1,5 +1,5 @@
 \usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
+\usepackage[english, russian]{babel}
 \usepackage{tikz}
 \usepackage{ntheorem}
 \usepackage{tabu}
@@ -17,14 +17,10 @@
 \usepackage[margin=1in,letterpaper]{geometry} % decreases margins
 \usepackage{cite} % takes care of citations
 \usepackage[final]{hyperref} % adds hyper links inside the generated pdf file
+\usepackage{amsfonts} % Пакеты для математических символов и теорем
+\usepackage{amstext}
+\usepackage[nottoc]{tocbibind} % Для того, чтобы список литературы отображался в оглавлении
 
+% Библиотеки
 
 \usetikzlibrary{shapes.geometric,shapes.symbols,positioning,decorations.pathmorphing}
-
-\DeclareMathOperator*{\argmax}{argmax} % thin space, limits underneath in displays
-\DeclareMathOperator*{\argmin}{argmin} % thin space, limits underneath in displays
-\DeclareMathOperator*{\Motimes}{\text{\raisebox{0.25ex}{\scalebox{0.8}{$\bigotimes$}}}}
-
-
-\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
-            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
