@@ -1,8 +1,9 @@
+
 \hspace{5mm}
 
-Теперь для каждой пары параметров $(\hat \mu, \hat \lambda)$ найдём множество
+Теперь для каждой пары параметров $(\mu, \lambda)$ найдём множество
 соответсвующих оптимальных пар 
-$(p^*(\hat \mu, \hat \lambda), q^*(\hat \mu, \hat \lambda)) \in P \times Q$. 
+$(p^0(\mu, \lambda), q^0(\mu, \lambda)) \in P \times Q$. 
 Рассмотрим все возможные сочетания значений для $p^*$ и $q^*$ в системах 
 \eqref{eq:argmin_L_1} \eqref{eq:argmax_G_1}, что даст нам 6 следующих систем:
 
@@ -36,7 +37,7 @@ $$
 $$
 
 Значит при $\mu = 1$  и $\lambda \in (0,1]$ имеем следующие оптимальные пары:
-$(p^*, q^*) \in (0, 1)$
+$(p^0, q^0) \in (0, 1)$.
 
 %---------------------------2------------------------
 \hspace{5mm}
@@ -67,7 +68,7 @@ $$
 
 Значит при $\mu \in [0, 1]$ и $\lambda \in (\frac{1-\mu}{1+\mu}, 1]$
 имеем следующие оптимальные пары
-$(p^*, q^*) \in (0, \dfrac{2\mu}{1 + \mu})$
+$(p^0, q^0) \in (0, \dfrac{2\mu}{1 + \mu})$.
 
 %---------------------------3------------------------
 \hspace{5mm}
@@ -98,7 +99,7 @@ $$
 
 Значит при $\mu \in [0, 1]$ и $\lambda \in [0, 2\frac{1-\mu}{2-\mu})$
 имеем следующие оптимальные пары
-$ (p^*, q^*) \in (1, \frac{\mu}{2 - \mu})$
+$ (p^0, q^0) \in (1, \frac{\mu}{2 - \mu})$.
 
 %---------------------------4------------------------
 \hspace{5mm}
@@ -128,7 +129,7 @@ $$
 $$
 
 Значит при $\mu=0$ и $\lambda \in [0, 1)$ имеем следующие оптимальные пары
-$ (p^*, q^*) \in (1, 0)$
+$ (p^0, q^0) \in (1, 0)$.
 
 %---------------------------5------------------------
 \hspace{5mm}
@@ -158,7 +159,7 @@ $$
 
 Значит при $\mu \in [0, 1]$ и $\lambda = 2\dfrac{1 - \mu}{2 - \mu}$ 
 имеем следующие оптимальные пары
-$ (p^*, q^*) \in [1 - \mu, 1] \times  \{ \frac{\mu}{2 - \mu}\}$
+$ (p^0, q^0) \in [1 - \mu, 1] \times  \{ \frac{\mu}{2 - \mu}\}$.
 
 %---------------------------6------------------------
 \hspace{5mm}
@@ -188,79 +189,70 @@ $$
 
 Значит при $\mu \in [0, 1]$ и $\lambda = \dfrac{1-\mu}{1+\mu}$
 имеем следующие оптимальные пары
-$(p^*, q^*) \in [0, 1 - \mu] \times \{\frac{2\mu}{1 + \mu}\}$.
-
-\hspace{5mm}
-
-Введём обозначения для множества оптимальных пар:
-
-$$
-	\mathbb{O} = \{
-		(p, q) \: | \: p \in P, q \in Q 
-		\textrm{ такие что верно \eqref{def:optimal_strategy}}
-	\}
-$$
+$(p^0, q^0) \in [0, 1 - \mu] \times \{\frac{2\mu}{1 + \mu}\}$.
 
 Итого получаем:
 
-$\mathbb{O} =
-\begin{cases}
-	(0, \, 1), & \mu = 1, \: \lambda \in (0,1] 
-	\\
-	(0, \, \dfrac{2\mu}{1 + \mu}), & 
-	\mu \in [0, 1], \: \lambda \in (\dfrac{1-\mu}{1+\mu}, 1]
-	\\
-	(1, \, \dfrac{\mu}{2 - \mu}), & 
-	\mu \in [0, 1], \: \lambda \in [0, 2\dfrac{1-\mu}{2-\mu})
-	\\
-	(1, \, 0), & \mu=0, \: \lambda \in [0, 1)
-	\\
-	[1 - \mu, 1] \times  \Big\{ \dfrac{\mu}{2 - \mu}\Big\}, &
-	\mu \in [0, 1], \: \lambda = 2\dfrac{1 - \mu}{2 - \mu}	
-	\\
-	[0, 1 - \mu] \times \Big\{\dfrac{2\mu}{1 + \mu}\Big\}, &
-	\mu \in [0, 1], \: \lambda = \dfrac{1-\mu}{1+\mu}
-	\\
-\end{cases}
-$
+$$
+	\mathbb{O}_2 =
+	\begin{cases}
+		(0, \, 1), & \mu = 1, \: \lambda \in (0,1] 
+		\\
+		(0, \, \dfrac{2\mu}{1 + \mu}), & 
+		\mu \in [0, 1], \: \lambda \in (\frac{1-\mu}{1+\mu}, 1]
+		\\
+		(1, \, \dfrac{\mu}{2 - \mu}), & 
+		\mu \in [0, 1], \: \lambda \in [0, 2\frac{1-\mu}{2-\mu})
+		\\
+		(1, \, 0), & \mu=0, \: \lambda \in [0, 1)
+		\\
+		[1 - \mu, 1] \times  \Big\{ \dfrac{\mu}{2 - \mu}\Big\}, &
+		\mu \in [0, 1], \: \lambda = 2\dfrac{1 - \mu}{2 - \mu}	
+		\\
+		[0, 1 - \mu] \times \Big\{\dfrac{2\mu}{1 + \mu}\Big\}, &
+		\mu \in [0, 1], \: \lambda = \dfrac{1-\mu}{1+\mu}
+		\\
+	\end{cases}
+$$
 
 Некоторые условия оптимальных пар пересекаются, поэтому 
-сагрегируем систему по условиям таким образом, чтобы
-множества $(\mu, \lambda)$ которые они задают имели
+произведём агрегацию системы по условиям таким образом, чтобы
+множества $(\mu, \lambda)$ которые они задают имели между собой
 пустое пересечение.
 
-$\mathbb{O} =
-\begin{cases}
-	(1, \, 0), & \mu = 0, \lambda \in [0, 1) 
-	\\
-	[0, 1] \times \{0\}, & 
-	\mu=0, \lambda =1
-	\\
-	[0, 1] \times \{1\}, &
-	\mu = 1, \lambda = 0
-	\\
-	\{1\} \times \{\dfrac{\mu}{2-\mu}\}, &
-	\mu \in (0,1), \lambda \in (0, \dfrac{1 - \mu}{1 + \mu}]
-	\\
-	\{1\} \times \{\frac{\mu}{2-\mu}\} \cup
-	[0,1-\mu] \times \{\frac{2\mu}{1+\mu}\} &
-	\mu \in (0,1), \lambda = \dfrac{1-\mu}{1+\mu}
-	\\
-	(0, \dfrac{2\mu}{1 + \mu}) \cup
-	(1, \dfrac{\mu}{2 - \mu}) &
-	\mu \in [(, 1), \lambda \in 
-	[0, 2\dfrac{1 - \mu}{2 - \mu}] \cap (\dfrac{1 - \mu}{1 + \mu}, 	1]
-	\\
-	(0, \dfrac{2\mu}{1+\mu}) \cup
-	[1 - \mu, 1] \times \{\dfrac{\mu}{2 - \mu}\} &
-	\mu \in (0, 1), \lambda = 2\dfrac{1 - \mu}{2 - \mu}
-	\\
-	(0, \dfrac{2\mu}{1 + \mu}) &
-	\mu \in (0, 1), \lambda \in (2\dfrac{1 - \mu}{2 - \mu}, 1]
-	\\
-	(0, 1) & \mu = 1, \lambda \in (0, 1] 
-\end{cases}
-$
+$$
+	\mathbb{O}_2 =
+	\begin{cases}
+		(1, \, 0), & \mu = 0, \lambda \in [0, 1) 
+		\\
+		[0, 1] \times \{0\}, & 
+		\mu=0, \lambda =1
+		\\
+		[0, 1] \times \{1\}, &
+		\mu = 1, \lambda = 0
+		\\
+		\{1\} \times \{\dfrac{\mu}{2-\mu}\}, &
+		\mu \in (0,1), \lambda \in (0, \dfrac{1 - \mu}{1 + \mu}]
+		\\
+		\{1\} \times \{\frac{\mu}{2-\mu}\} \cup
+		[0,1-\mu] \times \{\frac{2\mu}{1+\mu}\} &
+		\mu \in (0,1), \lambda = \dfrac{1-\mu}{1+\mu}
+		\\
+		(0, \dfrac{2\mu}{1 + \mu}) \cup
+		(1, \dfrac{\mu}{2 - \mu}) &
+		\mu \in [(, 1), \lambda \in 
+		[0, 2\dfrac{1 - \mu}{2 - \mu}] \cap (\dfrac{1 - \mu}{1 + \mu}, 	1]
+		\\
+		(0, \dfrac{2\mu}{1+\mu}) \cup
+		[1 - \mu, 1] \times \{\dfrac{\mu}{2 - \mu}\} &
+		\mu \in (0, 1), \lambda = 2\dfrac{1 - \mu}{2 - \mu}
+		\\
+		(0, \dfrac{2\mu}{1 + \mu}) &
+		\mu \in (0, 1), \lambda \in (2\dfrac{1 - \mu}{2 - \mu}, 1]
+		\\
+		(0, 1) & \mu = 1, \lambda \in (0, 1] 	
+	\end{cases}
+$$
 
 Каждое из множеств в условиях системы изображено на отдельном графике
 на рисунке снизу. Визульно видно, что были рассмотрены все точки

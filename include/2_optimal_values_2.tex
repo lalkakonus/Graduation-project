@@ -1,233 +1,235 @@
 \subsection{Рассмотрим игру за студента}
-\begin{flushleft}
 
-	Игрок \textbf{С} стремится максимизировать функциональный критерий: 
-	
-	$$F(x, y) = (\frac{y\sqrt{x}}{2},\frac{\sqrt{1-x}}{y})$$	
-
-	Игрок \textbf{С} использует смешанную стратегию, т.е. его стратегией является
-	распределение $q=(q_0,q_1,q_2)$ над множеством чистых стратегий 
-	$X=\{0,\frac{1}{2},1\}$:\\
-
-	$$
-		F_\textrm{C}=
-		\big \langle
-			q_0\frac{y\sqrt{0}}{2} + 
-			q_1\frac{y}{2} \sqrt{\frac{1}{2}} + 
-			q_2\frac{y\sqrt{1}}{2};
-			q_0\frac{\sqrt{1}}{y} +
-			q_1\frac{1}{y} \sqrt{\frac{1}{2}} +
-			q_2\frac{\sqrt{0}}{y}
-		\big \rangle = 
-	$$
-	$$
-		=\big \langle
-			\frac{y}{2}\cdot\frac{1-q_0+(\sqrt{2}-1)q_2}{\sqrt{2}};
-			\frac{1}{y}\cdot\frac{1-q_2+(\sqrt{2}-1)q_0}{\sqrt{2}}
-		\big \rangle
-	$$	
-	
-	Затем использует \textbf{ОЛС} (2). Сначала рассмотрим вырожденные случаи \\
-	когда $\mu=0$ и  $\mu=1$. 
+Игрок \textbf{С} стремится максимизировать вектор-функцию выигрыша: 
+$$
+	F(x, y) = (\frac{y\sqrt{x}}{2},\frac{\sqrt{1-x}}{y})
+$$
+Игрок \textbf{С} использует смешанную стратегию, т.е. его стратегией является
+распределение $q=(q_0,q_1,q_2)$ над множеством чистых стратегий 
+$X=\{0,\frac{1}{2},1\}$:
+\begin{gather*}
+	F_\textrm{C}=
+	\big \langle
+		q_0\frac{y\sqrt{0}}{2} + 
+		q_1\frac{y}{2} \sqrt{\frac{1}{2}} + 
+		q_2\frac{y\sqrt{1}}{2};
+		q_0\frac{\sqrt{1}}{y} +
+		q_1\frac{1}{y} \sqrt{\frac{1}{2}} +
+		q_2\frac{\sqrt{0}}{y}
+	\big \rangle = 
+	\\
+	=\big \langle
+		\frac{y}{2}\cdot\frac{1-q_0+(\sqrt{2}-1)q_2}{\sqrt{2}};
+		\frac{1}{y}\cdot\frac{1-q_2+(\sqrt{2}-1)q_0}{\sqrt{2}}
+	\big \rangle
+\end{gather*}
+Затем использует \textbf{ОЛС} \eqref{eq:RL_scalarization}. 
+Сначала рассмотрим вырожденные случаи для свёртки - когда 
+параметры равны $\mu=0$ и  $\mu=1$. 
 
 %-----------------------------------------------------------------------
 
-	\textbf{(1)} Если $\mu=0$:
-	$$
-		G(y,q,0)=\frac{1}{\sqrt{2}}\cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{y}
-	$$	
-	
-	Далеем осредняем функцию $G(y,q,\mu)$ по стратегиям 
-	противника $y \in Y=\{1,2\}$ c вероятностями $(1-p,p)$:
-	\begin{gather*}
-		\overline G(p,q,0)=
-		\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{1}+
-		\frac{p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{2}=\\
-		=\frac{(2-p)(1-q_2+(\sqrt{2}-1)q_0)}{2\sqrt{2}}
-	\end{gather*}
-	
-	Найдём частные производную по переменным $q_0$ и $q_2$, при этом
-	введём следующие обозначения для сокращения записи:
-	
-	\begin{equation}\label{eq:G_dericative}
-		\frac{\partial \overline G(p,q,\mu)}{\partial q}
-		=\langle \frac{\partial \overline G(p,q,\mu)}{\partial q_0};
-		\frac{\partial \overline G(p,q,\mu)}{\partial q_2} \rangle=
-		\langle g_1(p,q,\mu), g_2(p,q,\mu) \rangle
-	\end{equation}
+\textbf{(1)} 
+Если $\mu=0$:
+$$
+	G(y,q,0)=\frac{1}{\sqrt{2}}\cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{y}
+$$	
 
-	$$
-		\frac{\partial \overline G(p,q,0)}{\partial q}
-		=\frac{2-p}{2\sqrt{2}} \langle \sqrt{2}-1;-1\rangle
-	$$
-	Поскольку $p \leqslant 1$, то $\dfrac{2-p}{2\sqrt{2}} > 0 $.
-	Мы рассматриваем задачу максимизации \\ на множестве $(3)$.
-	Следовательно:
-	$$q^* = \arg \max \limits_{q \in Q} \overline G(p,q,0)=(1,0).$$
+Далеем осредняем функцию $G(y,q,0)$ по стратегиям 
+противника $y \in Y=\{1,2\}$ c вероятностями $(1-p,p)$:
+\begin{gather*}
+	\overline G(p,q,0)=
+	\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{1}+
+	\frac{p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{2}=\\
+	=\frac{(2-p)(1-q_2+(\sqrt{2}-1)q_0)}{2\sqrt{2}}
+\end{gather*}
+	
+Найдём частные производную по переменным $q_0$ и $q_2$. 
+Введём следующие обозначения для сокращения записи:
 
+\begin{equation}
+	\frac{\partial \overline G(p,q,\mu)}{\partial q}=
+	\langle 
+		\frac{\partial \overline G(p,q,\mu)}{\partial q_0};
+		\frac{\partial \overline G(p,q,\mu)}{\partial q_2} 
+	\rangle=
+	\langle g_1(p,q,\mu), g_2(p,q,\mu) \rangle
+	\label{eq:G_dericative}
+\end{equation}
+
+$$
+	\frac{\partial \overline G(p,q,0)}{\partial q}
+	=\frac{2-p}{2\sqrt{2}} \langle \sqrt{2}-1;-1\rangle
+$$
+Поскольку $p \leqslant 1$, то $\dfrac{2-p}{2\sqrt{2}} > 0 $.
+Мы рассматриваем задачу максимизации \\ на множестве $Q$, cледовательно:
+$$
+	q^* = \arg \max \limits_{q \in Q} \overline G(p,q,0)=(1,0).
+$$
+	
 %--------------------------------------------------------------------
 	
-	\textbf{(2)} Если $\mu=1:$
-	$$
-		G(y,q,1)=\frac{1}{\sqrt{2}}\cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{y}
-	$$	
-	
-	Далеем осредняем функцию $G(y,q,\mu)$ по стратегиям 
-	противника $y \in Y=\{1,2\}$ c вероятностями $(1-p,p)$:
-	
-	\begin{gather*}
-		\overline G(p,q,1)=
-		\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{2}+
-		\frac{p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{1}=\\
-		=\frac{(p+1)(1-q_0+(\sqrt{2}-1)q_2)}{2\sqrt{2}}
-	\end{gather*}
-	
-	Найдём частные производную по переменным $q_0$ и $q_2$:	
-	
-	$$
-		\frac{\partial \overline G(p,q,1)}{\partial q}
-		=\frac{p+1}{2\sqrt{2}} \langle -1; \sqrt{2}-1\rangle
-	$$
-	
-	Поскольку $p \geqslant 0$, то $\dfrac{p+1}{2\sqrt{2}} > 0 $.
-	Мы рассматриваем задачу максимизации \\ на множестве $(3)$.
-	Следовательно:
-	$$q^* = \arg \max \limits_{q\in Q} \overline G(p,q,1)=(0,1).$$
+\textbf{(2)}
+Если $\mu=1:$
+$$
+	G(y,q,1)=\frac{1}{\sqrt{2}}\cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{y}
+$$	
+Далеем осредняем функцию $G(y,q,1)$ по стратегиям 
+противника $y \in Y=\{1,2\}$ c вероятностями $(1-p,p)$:
+\begin{gather*}
+	\overline G(p,q,1)=
+	\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{2}+
+	\frac{p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{1}=\\
+	=\frac{(p+1)(1-q_0+(\sqrt{2}-1)q_2)}{2\sqrt{2}}
+\end{gather*}
+Найдём частные производную по переменным $q_0$ и $q_2$:	
+$$
+	\frac{\partial \overline G(p,q,1)}{\partial q}
+	=\frac{p+1}{2\sqrt{2}} \langle -1; \sqrt{2}-1\rangle
+$$
+Поскольку $p \geqslant 0$, то $\dfrac{p+1}{2\sqrt{2}} > 0 $.
+Мы рассматриваем задачу максимизации на множестве $Q$, 
+cледовательно:
+$$
+	q^* = \arg \max \limits_{q\in Q} \overline G(p,q,1)=(0,1).
+$$
 
 %--------------------------------------------------------------------
-		
-	\textbf{(3)} Теперь $\mu \neq 0,1$:
-	$$
-		G(y,q,\mu)=\frac{1}{\sqrt{2}}\min \limits_{0<\mu<1}
-		\big \langle
-			\frac{y}{2} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{\mu};
-			\frac{1}{y} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu}
-		\big \rangle	
-	$$
 
-	Далеем осредняем функцию $G(y,q,\mu)$ по стратегиям 
-	противника $y \in Y=\{1,2\}$ c вероятностями $(1-p,p)$:
-
-	\begin{multline}\label{eq:G_aver}
-		\overline G(p,q,\mu)=\frac{1-p}{\sqrt{2}}\min \limits_{0<\mu<1}
-		\big \langle
-			\frac{1-q_0+(\sqrt{2}-1)q_2}{2\mu};
-			\frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu}
-		\big \rangle + \\
-		+\frac{p}{\sqrt{2}}\min \limits_{0<\mu<1}
-		\big \langle
-			\frac{1-q_0+(\sqrt{2}-1)q_2}{\mu};
-			\frac{1-q_2+(\sqrt{2}-1)q_0}{2(1-\mu)}
-		\big \rangle 
-	\end{multline}
+\textbf{(3)} 
+Теперь $\mu \neq 0,1$:
+$$
+	G(y,q,\mu)=\frac{1}{\sqrt{2}}\min \limits_{0<\mu<1}
+	\big \langle
+		\frac{y}{2} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{\mu};
+		\frac{1}{y} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu}
+	\big \rangle	
+$$
+Далеем осредняем функцию $G(y,q,\mu)$ по стратегиям 
+противника $y \in Y=\{1,2\}$ c вероятностями $(1-p,p)$:
+\begin{multline}
+	\label{eq:G_aver}
+	\overline G(p,q,\mu)=\frac{1-p}{\sqrt{2}}\min \limits_{0<\mu<1}
+	\big \langle
+		\frac{1-q_0+(\sqrt{2}-1)q_2}{2\mu};
+		\frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu}
+	\big \rangle + \\
+	+\frac{p}{\sqrt{2}}\min \limits_{0<\mu<1}
+	\big \langle
+		\frac{1-q_0+(\sqrt{2}-1)q_2}{\mu};
+		\frac{1-q_2+(\sqrt{2}-1)q_0}{2(1-\mu)}
+	\big \rangle 
+\end{multline}
 	
-	Введём вспомогательные обозначения:
+Введём вспомогательные обозначения:
+\begin{gather*}
+	\ell_1(q,\mu)=\frac{1-q_0+(\sqrt{2}-1)q_2}{2\mu} \\
+	\ell_2(q,\mu)=\frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu} \\
+	\ell_3(q,\mu)=\frac{1-q_0+(\sqrt{2}-1)q_2}{\mu} \\
+	\ell_4(q,\mu)=\frac{1-q_2+(\sqrt{2}-1)q_0}{2(1-\mu)}
+\end{gather*}
 	
-	\begin{gather*}
-		\ell_1(q,\mu)=\frac{1-q_0+(\sqrt{2}-1)q_2}{2\mu} \\
-		\ell_2(q,\mu)=\frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu} \\
-		\ell_3(q,\mu)=\frac{1-q_0+(\sqrt{2}-1)q_2}{\mu} \\
-		\ell_4(q,\mu)=\frac{1-q_2+(\sqrt{2}-1)q_0}{2(1-\mu)}
-	\end{gather*}
 	
+Для различных значений переменной $\mu$ рассмотрим 
+взаимные расположения множеств $\ell_1>\ell_2$ и $\ell_3>\ell_4$
+на плоскости $(q_0,q_2)$. Другими словами для фиксированного 
+значения $\mu \in [0,1]$ найдём области плоскости, в которых 
+достигается минимум одного из выражений в \eqref{eq:G_aver}
 	
-	Для различных значений переменной $\mu$ рассмотрим 
-	взаимные расположения множеств $\ell_1>\ell_2$ и $\ell_3>\ell_4$
-	на плоскости $(q_0,q_2)$. Другими словами для фиксированного 
-	значения $\mu \in [0,1]$ найдём области плоскости, в которых 
-	достигается минимум одного из выражений в (5):
-	
-	\begin{figure}[H]
+\begin{figure}[H]
+   	\centering
+    \begin{subfigure}[b]{0.22 \textwidth}
     	\centering
-     	\begin{subfigure}[b]{0.22 \textwidth}
-        	\centering
-        	\includegraphics[width=\textwidth]{part_3/graf_6_1}
-        	\caption{$\mu=0.8$}
-         	\label{fig:y equals x}
-     	\end{subfigure}
-     	\hfill
-     	\begin{subfigure}[b]{0.22 \textwidth}
-        	\centering
-        	\includegraphics[width=\textwidth]{part_3/graf_6_2}
-        	\caption{$\mu=\frac{2}{3}$}
-        	\label{fig:three sin x}
-     	\end{subfigure}
-     	\hfill
-     	\begin{subfigure}[b]{0.22 \textwidth}
-        	\centering
-        	\includegraphics[width=\textwidth]{part_3/graf_6_3}
-        	\caption{$\mu=\frac{1}{3}$}
-        	\label{fig:five over x}
-     	\end{subfigure}
-     	\hfill
-     	\begin{subfigure}[b]{0.22 \textwidth}
-        	\centering
-        	\includegraphics[width=\textwidth]{part_3/graf_6_4}
-         	\caption{$\mu=0.1$}
-         	\label{fig:five over x}
-     	\end{subfigure}
-	\end{figure}
+    	\includegraphics[width=\textwidth]{part_3/graf_6_1}
+		\caption{$\mu=0.8$}
+        \label{fig:y equals x}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.22 \textwidth}
+       	\centering
+       	\includegraphics[width=\textwidth]{part_3/graf_6_2}
+       	\caption{$\mu=\frac{2}{3}$}
+       	\label{fig:three sin x}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.22 \textwidth}
+       	\centering
+       	\includegraphics[width=\textwidth]{part_3/graf_6_3}
+       	\caption{$\mu=\frac{1}{3}$}
+       	\label{fig:five over x}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.22 \textwidth}
+       	\centering
+       	\includegraphics[width=\textwidth]{part_3/graf_6_4}
+		\caption{$\mu=0.1$}
+        \label{fig:five over x}
+     \end{subfigure}
+\end{figure}
+Поясним график. Синяя область -- это множество $\ell_1 > \ell_2$.
+Зелёная область на графике -- это множнство $\ell_3 < \ell_4$.
+Область между ними -- это множество $\{\ell_1<\ell_2 \cap \ell_3 > \ell_4\}$.
+Исходя из графиков $\{\ell_1>\ell_2 \cap \ell_3 < \ell_4\} = \emptyset$ 
+при $(\mu, q) \in (0, 1) \times [0, 1]^2$.
+Поскольку граничные случаи для параметра $\mu$ были рассмотрены в первых
+двух пунктах, то квадрат $[0,1]^2$ на плоскости $(q_0,q_2)$ делится на 3
+связные, не пересекающихся множества.
 	
-	Поясним график. Синяя область - это множество $\ell_1 > \ell_2$.\\
-	Зелёная область на графике - это множнство $\ell_3 < \ell_4$.\\
-	Область между ними - это множество $\{\ell_1<\ell_2 \cap \ell_3 > \ell_4\}$.
-	Исходя из графиков $\{\ell_1>\ell_2 \cap \ell_3 < \ell_4\} = \emptyset$ 
-	при $(\mu, q) \in (0, 1) \times [0, 1]^2$.
-	Поскольку граничные случаи для параметра $\mu$ были рассмотрены в первых
-	двух пунктах, то квадрат $[0,1]^2$ на плоскости $(q_0,q_2)$ делится на 3 не 
-	пересекающихся множества.
+\textbf{Добавить доказательство того, что всего три возможных варианта}\\
+\textbf{(1)} 
+Рассмотрим полуплоскость, которая определяется системой
+$
+	\begin{cases}
+		\ell_1 > \ell_2 \\
+		\ell_3 > \ell_4
+	\end{cases}.
+$
+Вторая строчка в системе является избыточной, т.к. следует из первой.
+Система эквивалентна неравенству $\ell_1 > \ell_2$. Выражение \eqref{eq:G_aver} на этом множестве принимает следующий вид:
+\begin{gather*}
+	\overline G(p,q,\mu)=
+	\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu} + 
+	\frac{p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{2(1-\mu)} = \\
+	=\frac{2-p}{2\sqrt{2}}\cdot\frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu}		
+\end{gather*}
+\textbf{(2)}
+Рассмотрим полуплоскость, которая определяется системой
+$
+	\begin{cases}
+		\ell_1 < \ell_2 \\
+		\ell_3 < \ell_4
+	\end{cases}.
+$
+Первая строчка в системе является избыточной, т.к. следует из второй.
+Система эквивалентна неравенству $\ell_3 < \ell_4$.
+Выражение \eqref{eq:G_aver} на этом множестве принимает следующий вид
+\begin{gather*}
+	\overline G(p,q,\mu)=
+	\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{2\mu} + 
+	\frac{p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{\mu} = \\
+	=\frac{1+p}{2\sqrt{2}}\cdot\frac{1-q_0+(\sqrt{2}-1)q_2}{\mu}		
+\end{gather*}
+\textbf{(3)}
+Рассмотрим область, которая определяется системой
+$
+	\begin{cases}
+		\ell_1 < \ell_2 \\
+		\ell_3 > \ell_4
+	\end{cases}.
+$
+Выражение \eqref{eq:G_aver} на этом множестве принимает следующий вид:	
+\begin{gather*}	
+	\overline G(p,q,\mu)=
+	\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{2\mu} +
+	\frac{p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{2(1-\mu)}=
+	\\	
+	=\frac{(1-p)(1-\mu)(1-q_0+(\sqrt{2}-1)q_2)+p\mu(1-q_2+(\sqrt{2}-1)q_0)}
+	{2\sqrt{2}\mu(1-\mu)}
+\end{gather*}
 	
-	\textbf{Добавить доказательство того, что всего три возможных варианта}
+Итого: 
 
-	\textbf{(1)} Рассмотрим полуплоскость, которая определяется системой
-	$\begin{cases}
-			\ell_1 > \ell_2 \\
-			\ell_3 > \ell_4
-	\end{cases} \sim \; \l_1 > l_2$
-	
-	Выражение \eqref{eq:G_aver} на этом множестве принимает следующий вид:
-	
-	\begin{gather*}
-		\overline G(p,q,\mu)=
-		\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu} + 
-		\frac{p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{2(1-\mu)} = \\
-		=\frac{2-p}{2\sqrt{2}}\cdot\frac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu}		
-	\end{gather*}
-	
-	\textbf{(2)} Рассмотрим полуплоскость, которая определяется системой
-	$\begin{cases}
-			\ell_1 < \ell_2 \\
-			\ell_3 < \ell_4
-	\end{cases} \sim \; \l_3 < l_4$
-	
-	Выражение \eqref{eq:G_aver} на этом множестве принимает следующий вид:
-	
-	\begin{gather*}
-		\overline G(p,q,\mu)=
-		\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{2\mu} + 
-		\frac{p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{\mu} = \\
-		=\frac{1+p}{2\sqrt{2}}\cdot\frac{1-q_0+(\sqrt{2}-1)q_2}{\mu}		
-	\end{gather*}
-	
-	\textbf{(3)} Рассмотрим область, которая определяется системой
-	$\begin{cases}
-			\ell_1 < \ell_2 \\
-			\ell_3 > \ell_4
-	\end{cases}$
-
-	Выражение \eqref{eq:G_aver} на этом множестве принимает следующий вид:	
-	
-	\begin{gather*}	
-		\overline G(p,q,\mu)=
-		\frac{1-p}{\sqrt{2}} \cdot \frac{1-q_0+(\sqrt{2}-1)q_2}{2\mu} +
-		\frac{p}{\sqrt{2}} \cdot \frac{1-q_2+(\sqrt{2}-1)q_0}{2(1-\mu)}=\\	
-		=\frac{(1-p)(1-\mu)(1-q_0+(\sqrt{2}-1)q_2)+p\mu(1-q_2+(\sqrt{2}-1)q_0)}
-		{2\sqrt{2}\mu(1-\mu)}
-	\end{gather*}
-	
-	Итого: 
-	
-	$$
+$$
 	\overline G(p,q,\mu) =		
 	\begin{cases}
 		\dfrac{2-p}{2\sqrt{2}}\cdot\dfrac{1-q_2+(\sqrt{2}-1)q_0}{1-\mu} 
@@ -239,10 +241,9 @@
 		{2\sqrt{2}\mu(1-\mu)}
 		, \textrm{ иначе}
 	\end{cases}
-	$$	
-	
-	Тогда производная от функции имеет:
-	$$
+$$	
+Тогда вектор производных по переменным $(q_0,q_2)$ имеет вид:
+$$
 	\frac{\partial \overline{G}(p,q,\mu)}{\partial q}=
 	\begin{cases}
 		\dfrac{2-p}{2\sqrt{2}(1-\mu)} \langle \sqrt{2}-1; -1 \rangle 
@@ -252,172 +253,179 @@
 		\dfrac{1+p}{2\sqrt{2}\mu} \langle -1; \sqrt{2}-1 \rangle
 		,\hspace{2mm}
 		\ell_3 \leqslant \ell_4\\
-		
-		\tiny{
-		\dfrac{1}{2\sqrt{2}\mu(1-\mu)}
-		\big \langle 
-			(\sqrt{2} - 1)p\mu -(1-p)(1-\mu);
-			(\sqrt{2} - 1)(1-p)(1-\mu) - p\mu			
-		\big \rangle
+		\textbf{g}(p,\mu)
 		,\hspace{2mm}
 		\begin{cases}
 			\ell_1 \leqslant \ell_2\\
 			\ell_3 \geqslant \ell_4\\
 		\end{cases}
-		}
 	\end{cases}
-	$$
+$$
+где:
+$$
+	\textbf{g}(p,\mu) =
+	\dfrac{1}{2\sqrt{2}\mu(1-\mu)}
+	\big \langle 
+		(\sqrt{2} - 1)p\mu -(1-p)(1-\mu);
+		(\sqrt{2} - 1)(1-p)(1-\mu) - p\mu			
+	\big \rangle
+$$
 	
 %------------------------------------------------------------
 
-	\textbf{(1)} Рассмотрим $\ell_1 \geqslant \ell_2$. 
-	Производная в области имеет вид:
-	
-	$$\frac{\partial \overline{G}(p,q,\mu)}{\partial q}=
-	\frac{2-p}{2\sqrt{2}(1-\mu)} \langle \sqrt{2}-1; -1 \rangle$$
- 	
-	Введём вспомогалетльную функцию	
- 	$\ell_B(q, \mu):=(\ell_1-\ell_2) \cdot \mu(1-\mu)$,
- 	множество, на котором она принимает неотрицательные значения 
- 	составляют интересующую нас область. Множитель $\mu(1-\mu)$ является строго
- 	положительным на $\mu \in (0,1)$, поэтому не влияет на знак. Функция
- 	является линейной по переменным $q_0$ и $q_2$:
- 	
-	$$\ell_B(q, \mu) = 
+\textbf{(1)}
+Рассмотрим $\ell_1 \geqslant \ell_2$. Тогда вектор производных 
+по переменным $(q_0,q_2)$ имеет вид:
+$$
+	\frac{\partial \overline{G}(p,q,\mu)}{\partial q}=
+	\frac{2-p}{2\sqrt{2}(1-\mu)} \langle \sqrt{2}-1; -1 \rangle
+$$	
+Введём вспомогалетльную функцию 
+$\ell_B(q, \mu):=(\ell_1-\ell_2) \cdot \mu(1-\mu)$,
+множество, на котором она принимает неотрицательные значения 
+составляют интересующую нас область. Множитель $\mu(1-\mu)$ является строго
+положительным на $\mu \in (0,1)$, поэтому не влияет на знак. Функция
+является линейной по переменным $q_0$ и $q_2$:
+ 
+$$
+	\ell_B(q, \mu) = 
 	(1+\mu(2\sqrt{2}-3))q_0+
 	(1-\sqrt{2}+\mu(\sqrt{2}-3))q_2
-	+3\mu-1$$ 	
-	
-	Параметр $\mu$ изменяется в диапазоне $(0,1)$, причём	
-	
-	\begin{gather*}	
+	+3\mu-1
+$$ 	
+Параметр $\mu$ изменяется в диапазоне $(0,1)$, причём:
+\begin{gather*}	
 	\ell_B(q,\mu) \xrightarrow[\mu\rightarrow 1]{} 
 	1-q_0+(\sqrt{2}-1)q_2\\	
 	\ell_B(q,\mu) \xrightarrow[\mu\rightarrow 0]{} 	
-	1-q_2+(\sqrt{2}-1)q_0\\
-	\end{gather*}
+	1-q_2+(\sqrt{2}-1)q_0
+\end{gather*}
+Предельные положения $\ell_B(q, \mu)=0$ изображены на графике 
+\eqref{fig:l_B_limits}.
+
+\begin{figure}[H]
+	\centering
+  	\includegraphics[scale=0.5]{part_3/graf_3_2}
+  	\caption{}
+  	\label{fig:l_B_limits}
+\end{figure}
+Найдём значение $\mu$, при котором прямая $\ell_B(q, \mu)$ проходит через точку
+$q=(0,0)$:
+$$
+	\ell_B(0,0,\hat \mu) = 0
+	\Rightarrow \hat \mu = \frac{1}{3}
+$$	
 	
-	Предельные положения $\ell_B(q, \mu)=0$ изображены на графике \eqref{fig:l_B_limits}.
-	
-	\begin{figure}[H]
-		\centering
-  		\includegraphics[scale=0.3]{part_3/graf_3_2}
-  		\caption{}
-  		\label{fig:l_B_limits}
-	\end{figure}	
-	
-	Найдём значение $\mu$ при котором прямая $\ell_B(q, \mu)$ проходит через точку
-	$q=(0,0)$:
-	
-	$$\ell_B(0,0,\hat \mu) = 0
-	\Rightarrow \hat \mu = \frac{1}{3}$$	
-	
-	Очевидно, что на полиэдре $P_B(\mu):$
+Очевидно, что на полиэдре $P_B(\mu):$
 		
-	$$P_B(\mu)=\{q \in Q \; | 
-	\;  \ell_B(q, \mu) \geqslant 0 \}, \; \mu \in (0,1)$$
+$$
+	P_B(\mu)=\{q \in Q \; | 
+	\;  \ell_B(q, \mu) \geqslant 0 \}, \; \mu \in (0,1),
+$$
 	
-	функция $\overline{G}(p,q,\mu)$ достигает максимума в точке $B(\mu):$
-	
-	$$
+функция $\overline{G}(p,q,\mu)$ достигает максимума в точке $B(\mu):$
+$$
 	q^* = \arg \max \limits_{q\in P_B(\mu)} \overline G(y,q,\mu) = B(\mu)=
 	\begin{cases}
 		(0, q_2) : \ell_B(0,q_2,\mu)=0, & \frac{1}{3} \leqslant \mu < 1 \\
 		(q_0, 0) : \ell_B(q_0,0,\mu)=0, & 0 < \mu \leqslant \frac{1}{3} \\
 	\end{cases}	
-	$$
-	
-	\begin{figure}[H]
-    	\centering
-     	\begin{subfigure}[b]{0.4 \textwidth}
-        	\centering
-        	\includegraphics[width=\textwidth]{part_3/graf_3_3}
-        	\caption{$\mu=0.1 < \frac{1}{3}$}
-         	\label{fig:y equals x}
-     	\end{subfigure}
-     	\hspace{10mm}
-     	\begin{subfigure}[b]{0.4 \textwidth}
-        	\centering
-        	\includegraphics[width=\textwidth]{part_3/graf_3_4}
-        	\caption{$\mu=0.4 > \frac{1}{3}$}
-        	\label{fig:three sin x}
-     	\end{subfigure}
-	\end{figure}	
+$$
 
-	На графике зелёным цветом изображена область $P_B(\mu)$, чёрным цветом
-	обозначены линии уровня и стрелкой соответсвенно градиент функции.
-	Рассмотрим эти два случая и найдём явное выражение для точки $B(\mu)$:
+\begin{figure}[H]
+   	\centering
+	\begin{subfigure}[b]{0.4 \textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{part_3/graf_3_3}
+        \caption{$\mu=0.1 < \frac{1}{3}$}
+         \label{fig:y equals x}
+     \end{subfigure}
+     \hspace{10mm}
+     \begin{subfigure}[b]{0.4 \textwidth}
+       	\centering
+       	\includegraphics[width=\textwidth]{part_3/graf_3_4}
+       	\caption{$\mu=0.4 > \frac{1}{3}$}
+       	\label{fig:three sin x}
+     \end{subfigure}
+\end{figure}	
+
+На графике зелёным цветом изображена область $P_B(\mu)$, чёрным цветом
+обозначены линии уровня и стрелкой соответсвенно градиент функции.
+Рассмотрим эти два случая и найдём явное выражение для точки $B(\mu)$:
 	
-	\textbf{(a)} Если $\frac{1}{3} \leqslant \mu \leqslant 1$ то координата $q_2$ точки 
-	максимума определяется из условия: 
-	
-	\begin{gather*}
-		\ell_B(0,q_2,\mu)=0
+\textbf{(a)}
+Если $\frac{1}{3} \leqslant \mu \leqslant 1$ то координата $q_2$ 
+точки максимума определяется из условия: 	
+\begin{gather*}
+	\ell_B(0,q_2,\mu)=0
+	\\
+	(1-\sqrt{2}+\mu(\sqrt{2}-3))q_2+3\mu-1=0
+	\hspace{3mm} \Rightarrow \hspace{3mm}
+	q_2=\frac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}	
+	\\
+	q^*=(0;\dfrac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}), \hspace{3mm}
+	\frac{1}{3} \leqslant \mu \leqslant 1
+\end{gather*}
+
+\textbf{(b)}
+Если $0 \leqslant \mu \leqslant \frac{1}{3}$ то координата $q_0$ точки 
+максимума определяется из условия: 	
+\begin{gather*}
+	\ell_B(q_0,0,\mu)=0
+	\\	
+	(1+\mu(2\sqrt{2}-3))q_0
+	+3\mu-1=0
+	\hspace{3mm} \Rightarrow \hspace{3mm}
+	q_0=\frac{1-3\mu}{1+(2\sqrt{2}-3\mu)}	
+	\\ 	
+	q^*=(\frac{1-3\mu}{1+(2\sqrt{2}-3\mu)}; 0), \hspace{3mm}
+	0 \leqslant \mu \leqslant \frac{1}{3}
+\end{gather*}
+Следовательно:
+\begin{equation} 
+	\label{eq:B_point}
+	B(\mu) = \arg \max \limits_{q\in P_B(\mu)} \overline G(y,q,\mu) = 
+	\begin{cases}
+		(0;\dfrac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu})
+		, & \frac{1}{3} \leqslant \mu \leqslant 1
 		\\
-		(1-\sqrt{2}+\mu(\sqrt{2}-3))q_2+3\mu-1=0
-		\hspace{3mm} \Rightarrow \hspace{3mm}
-		q_2=\frac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}	
-		\\
-		q^*=(0;\dfrac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu}), \hspace{3mm}
-		\frac{1}{3} \leqslant \mu \leqslant 1
-	\end{gather*}
-
-	\textbf{(b)} Если $0 \leqslant \mu \leqslant \frac{1}{3}$ то координата $q_0$ точки 
-	максимума определяется из условия: 	
-
-	\begin{gather*}
-		\ell_B(q_0,0,\mu)=0
-		\\	
-		(1+\mu(2\sqrt{2}-3))q_0
-		+3\mu-1=0
-		\hspace{3mm} \Rightarrow \hspace{3mm}
-		q_0=\frac{1-3\mu}{1+(2\sqrt{2}-3\mu)}	
-		\\ 	
-		q^*=(\frac{1-3\mu}{1+(2\sqrt{2}-3\mu)}; 0), \hspace{3mm}
-		0 \leqslant \mu \leqslant \frac{1}{3}
-	\end{gather*}
-	
-	Следовательно:
-	\begin{equation} \label{eq:B}
-		B(\mu) = \arg \max \limits_{q\in P_B(\mu)} \overline G(y,q,\mu) = 
-		\begin{cases}
-			(0;\dfrac{3\mu-1}{\sqrt{2}-1+(3-\sqrt{2})\mu})
-			, & \frac{1}{3} \leqslant \mu \leqslant 1
-			\\
-			(\dfrac{1-3\mu}{1+(2\sqrt{2}-3\mu)};0)
-			, & 0 \leqslant \mu \leqslant \frac{1}{3}
-		\end{cases}
-	\end{equation}
+		(\dfrac{1-3\mu}{1+(2\sqrt{2}-3\mu)};0)
+		, & 0 \leqslant \mu \leqslant \frac{1}{3}
+	\end{cases}
+\end{equation}
 
 %------------------------------------------------------------
 
-	\textbf{(2)} Рассмотрим $\ell_3 \leqslant \ell_4$.
-	Производная в области имеет вид:
+\textbf{(2)} Рассмотрим $\ell_3 \leqslant \ell_4$.
+Производная в области имеет вид:
 	
-	$$\frac{\partial \overline{G}(p,q,\mu)}{\partial q}=
+$$
+	\frac{\partial \overline{G}(p,q,\mu)}{\partial q}=
 	\frac{1+p}{2\sqrt{2}\mu} \langle -1;\sqrt{2}-1 \rangle 
- 	$$
+$$
  	
-	Введём вспомогалетльную функцию	
- 	$\ell_A(q, \mu):=(\ell_3-\ell_4) \cdot \mu(1-\mu)$,
- 	множество, на котором она принимает неотрицательные значения 
- 	составляют интересующую нас область. Множитель $\mu(1-\mu)$ является строго
- 	положительным на $\mu \in (0,1)$, поэтому не влияет на знак. Функция
- 	является линейной по переменным $q_0$ и $q_2$:
+Введём вспомогалетльную функцию	
+$\ell_A(q, \mu):=(\ell_3-\ell_4) \cdot \mu(1-\mu)$,
+множество, на котором она принимает неотрицательные значения 
+составляют интересующую нас область. Множитель $\mu(1-\mu)$ является строго
+положительным на $\mu \in (0,1)$, поэтому не влияет на знак. Функция
+является линейной по переменным $q_0$ и $q_2$:
  	
-	$$\ell_A(q, \mu)=
+$$
+	\ell_A(q, \mu)=
 	-(2+(\sqrt{2}-3)\mu)q_0
 	-(2-2\sqrt{2}+(2\sqrt{2}-3)\mu)q_2
-	-3\mu+2$$ 	
+	-3\mu+2
+$$ 	
  	
-	Параметр $\mu$ изменяется в диапазоне $(0,1)$, причём	
+Параметр $\mu$ изменяется в диапазоне $(0,1)$, причём	
 	
-	\begin{gather*}	
+\begin{gather*}	
 	\ell_A(q,\mu) \xrightarrow[\mu\rightarrow 1]{} 
 	1-q_0+(\sqrt{2}-1)q_2\\	
 	\ell_A(q,\mu) \xrightarrow[\mu\rightarrow 0]{} 	
 	1-q_2+(\sqrt{2}-1)q_0\\
-	\end{gather*}
+\end{gather*}
 	
 	Предельные положения $\ell_B(q, \mu)=0$ изображены на графике \eqref{fig:l_B_limits}.
 	Найдём значение $\mu$ при котором прямая 
@@ -781,15 +789,6 @@
 	
 	Следующие точки являются оптимальными:
 	$$(p, q) \in P_0 \times Q_0$$
-		
-
-\end{flushleft}
-
-
-
-
-
-
 
 
 

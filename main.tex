@@ -12,22 +12,22 @@
 
 	\tableofcontents % Оглавление
 	
-	\input{include/introduction} % Введение
+	\include{include/introduction} % Введение
 	\include{include/problem_defenition} % Постановка задачи
 	\include{include/1_problem_defenition} % Постановка задачи при параметре
-% дискретизации Т=1
+											 % дискретизации Т=1
 	\input{include/1_optimal_strategies_a} % Решения игры для случая Т=1
-	%\input{include/1_optimal_strategies_b} % разбито на два файла
+	\input{include/1_optimal_strategies_b} % разбито на два файла
 
 	\include{include/2_problem_defenition} % Постановка задачи при параметре
-% дискретизации Т=2
-		\include{include/2_optimal_values_1}
-		\include{include/2_optimal_values_2}
+											 % дискретизации Т=2
+		\include{include/2_optimal_values_1} % Решения для Преподователя
+		\include{include/2_optimal_values_2} % Решения для Студента
 
 	\include{include/graphical_image_e}
 	\include{include/s_profit}
 
-	%\include{include/conclusion} % Заключение
+	\include{include/conclusion} % Заключение
 	
 	% Для соответствия требованиям об оформлении списка литературы
 	\bibliographystyle{gost71u} 
