@@ -1,14 +1,16 @@
-\section{Решение игры (Параметр дискретизации Т=2)}
+\section{Решение игры. \\Параметр дискретизации Т=2}
 
-\subsection{Рассмотрим игру за преподавателя}
+\subsection{Оптимальная стратегия преподавателя}
 
-Игрое \textbf{П} стремится минимизировать функциональный критерий: 
-	
+Игрок \textbf{П} стремится минимизировать вектор-функцию выигрыша  \eqref{eq:player_criterion}: 
 $$
-	F(x, y) = (\frac{y\sqrt{x}}{2},\frac{\sqrt{1-x}}{y})
+	F(x, y) = \Big \langle
+		\frac{y\sqrt{x}}{2},\frac{\sqrt{1-x}}{y}
+	\Big \rangle
 $$	
 Он использует смешанную стратегию, т.е. его стратегией является
-распределение $p=(p_0,p_1)$ над множеством чистых стратегий $Y=\{1,2\}$:
+распределение $p=(p_0,p_1) \in P$ над множеством чистых стратегий $Y=\{1,2\}$.
+Его вектор-функция выигрыша \eqref{eq:player_criterion} приобретает вид:
 \begin{multline*}
 	F_\textrm{П}(p,x)=
 	\big \langle 
@@ -19,7 +21,7 @@ $$
 	\big \langle
 		(p+1)\sqrt{x}; \;
 		(2-p)\sqrt{1-x}
-	\big \rangle
+	\big \rangle.
 \end{multline*}
 Затем использует \textbf{ЛС} \eqref{eq:linear_scalarization}:
 $$
@@ -29,8 +31,7 @@ $$
 		\lambda(p+1)\sqrt{x} + (1-\lambda)(2-p)\sqrt{1-x}
 	\big)
 $$
-	
-Введём обозначение $q=(q_0,q_1,q_2)$. Далеем осредняем 
+Далее осредняем 
 функцию $L(p,x,\lambda)$ по стратегиям противника $x \in X=\{0,\frac{1}{2},1\}$ 
 c вероятностями $q=(q_0,q_1,q_2)$:
 \begin{multline*} 
@@ -47,19 +48,19 @@ c вероятностями $q=(q_0,q_1,q_2)$:
 	\Big (
 		\big (\lambda(q_1+\sqrt{2}q_2)-(1-\lambda)(q_1+\sqrt{2}q_0) \big)p+
 		\big (\lambda(q_1+\sqrt{2}q_2)+2(1-\lambda)(q_1+\sqrt{2}q_0) \big)
-	\Big)
+	\Big).
 \end{multline*}
 Функция является линейной по переменной $p$:
 $$
 	\overline{L}(p,q,\lambda)=k(\lambda,q)p+b(\lambda,q),
 $$
-где
+где:
 \begin{gather*}
 	k(q, \lambda) = \frac{1}{2\sqrt{2}}
-	\big (\lambda(q_1+\sqrt{2}q_2)-(1-\lambda)(q_1+\sqrt{2}q_0) \big)	
+	\big (\lambda(q_1+\sqrt{2}q_2)-(1-\lambda)(q_1+\sqrt{2}q_0) \big)	,
 	\\
 	b(q, \lambda) = \frac{1}{2\sqrt{2}}
-	\big (\lambda(q_1+\sqrt{2}q_2)+2(1-\lambda)(q_1+\sqrt{2}q_0) \big)
+	\big (\lambda(q_1+\sqrt{2}q_2)+2(1-\lambda)(q_1+\sqrt{2}q_0) \big).
 \end{gather*}
 Наша задача -- найти 
 $p^*(q, \lambda)=\arg \min \limits_{p \in [0, 1]} \overline{L}(p,q,\lambda)$.
@@ -82,12 +83,12 @@ $$
 		\big (1 - q_2 + (\sqrt{2} - 1)q_0 \big)
 	\Big)
 $$
-Нас интересует знакт это функции при различных значениях аргументов.
+Нас интересует знак это функции при различных значениях аргументов.
 Введём обозначения:
 $$
 	\ell(q) = \frac{1 - q_2 + (\sqrt{2} - 1)q_0}{2+(\sqrt{2}-2)(q_0-q_2)}
 $$
-Напомним, что множестово $Q$ имеет следующий вид:
+Напомним, что множество $Q$ имеет следующий вид:
 $$
 	Q = \{
 		(q_0,q_2) \in \mathbb{R}^2_{+} \; | \;
@@ -111,7 +112,8 @@ $$
 	
 Более того верно что 
 $\forall \; q \in Q: \; 0 \leqslant \ell(q) \leqslant 1$. 
-Проиллюстрируем это на графике. В плоскости $q=(q_0,q_2)$ изображены 
+Проиллюстрируем это на рисунке \ref{fig:l}. 
+В плоскости $q=(q_0,q_2)$ изображены 
 прямые $\ell_1(q)$ и $\ell_2(q)$ такие, что:
 \begin{gather*}
 	\ell_1(q): \; \ell(q)=0 
@@ -121,11 +123,12 @@ $\forall \; q \in Q: \; 0 \leqslant \ell(q) \leqslant 1$.
 Зелёным цветом изображена область в которой
 $0 \leqslant \ell(q) \leqslant 1$.
 Видно, что квадрат $q = [0,1]^2$ а следовательно и
-множетсво $Q$ полностью принадлежит этой области.
+множество $Q$ полностью принадлежит этой области.
 \begin{figure}[H]
 	\centering
-  	\includegraphics[scale=0.5]{part_3/graf_3_1}
+  	\includegraphics[scale=0.6]{part_3/graf_3_1}
   	\caption{}
+  	\label{fig:l}
 \end{figure}
 
 Следовательно $\forall \; q=(q_0, q_2) \in Q \;
@@ -141,4 +144,4 @@ $0 \leqslant \ell(q) \leqslant 1$.
 	\end{cases},
 \end{equation}
 
-где $\ell(q)=\dfrac{1 - q_2 + (\sqrt{2} - 1)q_0}{2+(\sqrt{2}-2)(q_0-q_2)}$
+где $\ell(q)=\dfrac{1 - q_2 + (\sqrt{2} - 1)q_0}{2+(\sqrt{2}-2)(q_0-q_2)}$.

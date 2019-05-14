@@ -1,9 +1,9 @@
-\section{Решения игры (Параметр дискретизации Т=1)}
+\section{Решения игры. \\Параметр дискретизации Т=1}
 
 Для поиска оптимальных стратегий сначала необходимо найти точки максимума и минимума 
-функций выигрыша \textbf{С} и \textbf{П} соответсвенно:
+функций выигрыша \textbf{С} и \textbf{П} соответственно:
 $$
-	q^*(p, \mu) = \arg \max \limits_{q \in Q} \overline G(p, q, \mu)
+	q^*(p, \mu) = \arg \max \limits_{q \in Q_1} \overline G(p, q, \mu)
 	\textrm{ и }
 	p^*(q, \lambda) = \arg \min \limits_{p \in P} \overline L(p, q, \lambda).
 $$
@@ -19,7 +19,7 @@ $$
 	\end{cases}
 	\label{eq:argmin_L_1}
 \end{equation}
-Из пункта \textbf{[ещё не написано]} следует, что
+Аналогичными рассуждениями получаем, что:
 \begin{equation}
 	q^*(p, \mu) = \arg \max \limits_{q \in Q} \overline G(p, q, \mu) =
 	\begin{cases}
@@ -29,7 +29,7 @@ $$
 	\label{eq:argmax_G_1}
 \end{equation}
 
-Докажем утверждение характерезующее множество оптимальных пар данной игры.
+Докажем утверждение характеризующее множество оптимальных пар данной игры.
 
 \newtheorem{State}{Утверждение}\label{State:opt_strat_1}
 \begin{State}
